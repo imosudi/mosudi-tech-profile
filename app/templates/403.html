@@ -1,0 +1,18 @@
+{% extends "error_base.html" %}
+
+{% block title %}403 Forbidden | Mosudi Tech Profile{% endblock %}
+
+{% block content %}
+<section class="d-flex align-items-center justify-content-center vh-100 bg-light text-center">
+    <div class="container">
+        <h1 class="display-1 fw-bold text-warning">403</h1>
+        <h2 class="fw-semibold mb-3">Access Denied</h2>
+        <p class="text-muted mb-4">
+            You don’t have permission to view this page or perform this action.
+        </p>
+        <a href="{{ url_for('index') }}" class="btn btn-outline-warning px-4">
+            <i class="bi bi-arrow-left-circle"></i> Return to Home
+        </a>
+    </div>
+</section>
+{% endblock %}

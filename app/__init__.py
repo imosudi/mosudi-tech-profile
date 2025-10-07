@@ -1,10 +1,10 @@
 from curses import flash
 from flask import Flask, render_template, redirect, url_for
 from flask_security import Security, SQLAlchemyUserDatastore
-from extensions import db
-from forms import ContactForm
-from models import User, Role, Project
-from config import Config
+from .extensions import db
+from .forms import ContactForm
+from .models import User, Role, Project
+from .config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -53,6 +53,3 @@ def contact():
     return render_template('contact.html', title='Contact', form=form)
 
 
-
-if __name__ == '__main__':
-    app.run(debug=True)

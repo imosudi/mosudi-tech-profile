@@ -1,7 +1,7 @@
 # models.py
 from datetime import datetime
 from flask_security import UserMixin, RoleMixin
-from extensions import db
+from .extensions import db
 import uuid
 
 # Association table for roles and users

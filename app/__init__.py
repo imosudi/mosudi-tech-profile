@@ -1,6 +1,9 @@
 from curses import flash
 from flask import Flask, render_template, redirect, url_for
 from flask_security import Security, SQLAlchemyUserDatastore
+from flask_mail import Message, Mail
+#from app import  mail
+
 from .extensions import db
 from .forms import ContactForm
 from .models import User, Role, Project
@@ -8,10 +11,13 @@ from .config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
+# Register 'zip' as a Jinja filter
+app.jinja_env.filters['zip'] = zip
+
 
 # Initialise extensions
 db.init_app(app)
-
+mail=Mail()
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -43,13 +49,20 @@ def projects():
     projects = Project.query.all()
     return render_template('projects.html', title='Projects', projects=projects)
 
-@app.route('/contact', methods=['GET', 'POST'])
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        # Placeholder for mail sending or saving to DB
-        flash(f"Message from {form.name.data} sent successfully!", "success")
-        return redirect(url_for('contact'))
-    return render_template('contact.html', title='Contact', form=form)
+        # Example: send email (optional)
+        msg = Message(
+            subject=f"[Portfolio] {form.subject.data}",
+            sender=form.email.data,
+            recipients=["info@serverafrica.com"],
+            body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
+        )
+        mail.send(msg)
+        flash("Thank you! Your message has been sent successfully.", "success")
+        return redirect(url_for("contact"))
+    return render_template("contact.html", form=form)
 
 

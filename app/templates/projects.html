@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}Projects - {{ super() }}{% endblock %}
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Major Projects</h2>
+      <p class="text-muted">
+        Selected works demonstrating applied research, system design, and practical software engineering.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      {% for project in [
+        {
+          "title": "IoT-Based Adaptive Sensor Network",
+          "desc": "A smart agricultural monitoring framework designed for West African farm settlements. The system uses adaptive sensing algorithms to optimise sensor sleep cycles based on environmental conditions — balancing power efficiency and data reliability.",
+          "features": [
+            "Embedded Java simulation with dynamic sensor scheduling",
+            "Wireless data collection and MQTT integration",
+            "Performance analytics via adaptive interval logging"
+          ],
+          "icons": ["cpu", "wifi", "graph-up"]
+        },
+        {
+          "title": "Moving Window QR Attendance System",
+          "desc": "A cost-effective lecture attendance tracking solution leveraging dynamically changing QR codes. The system ensures authenticity and prevents proxy attendance without relying on GPS or Wi-Fi proximity.",
+          "features": [
+            "Encrypted payload validation via adaptive time windows",
+            "Server-side API for QR generation and verification",
+            "Client-side rendering with offline handling (pending)"
+          ],
+          "icons": ["shield-lock", "cloud-arrow-up", "phone"]
+        },
+        {
+          "title": "CarStand – Smart Vehicle Marketplace",
+          "desc": "A mobile-first car marketplace for buyers, sellers, and swappers in Nigeria, integrating secure messaging, media listings, and premium monetisation.",
+          "features": [
+            "Secure chat with voice/video calls",
+            "Boosted listings and analytics dashboard",
+            "Developed using Flutter and Firebase"
+          ],
+          "icons": ["chat-dots", "broadcast-pin", "android2"]
+        },
+        {
+          "title": "Creovue Analytics Tool (Prototype)",
+          "desc": "A Flask-based prototype that assists content creators in tracking engagement, video metrics, and optimisation opportunities for YouTube channels.",
+          "features": [
+            "Real-time performance dashboard",
+            "AI-powered content insights",
+            "Modular API-first architecture"
+          ],
+          "icons": ["graph-up-arrow", "pie-chart", "file-earmark-code"]
+        },
+        {
+          "title": "SentinelPi – Intelligent Infrastructure Surveillance",
+          "desc": "An IoT-driven cyber-physical framework for detecting infrastructure vandalism and theft using distributed edge sensors and machine learning.",
+          "features": [
+            "Edge-based anomaly detection with fog computing",
+            "Hierarchical L0–L4 node simulation",
+            "Secure cloud sync and adaptive node metrics"
+          ],
+          "icons": ["camera-video", "diagram-3", "cloud-check"]
+        },
+        {
+          "title": "GEO-MEC – Geographic Context-Aware Mobility Management",
+          "desc": "A research-driven edge computing framework that integrates predictive mobility analytics and geospatial intelligence for next-generation 6G edge orchestration.",
+          "features": [
+            "Predictive mobility using geographic context",
+            "Edge orchestration for low-latency handovers",
+            "Built upon MEC and CPS integration"
+          ],
+          "icons": ["globe", "router", "lightning"]
+        },
+        {
+          "title": "IoTLibre – Open IoT Management Platform",
+          "desc": "A modular open-source IoT orchestration platform for device, data, and rule-based automation management, supporting BLE, MQTT, and REST APIs.",
+          "features": [
+            "Unified device provisioning and monitoring",
+            "Extensible module interface with Flask microservices",
+            "Token-based security and data flow control"
+          ],
+          "icons": ["hdd-network", "code-square", "lock"]
+        },
+        {
+          "title": "Dynamic Fog Network Simulation",
+          "desc": "A Python-based simulation of multi-layer fog networks for agricultural IoT environments, tracking adaptive node health, PLR, CPU, and RTT over time.",
+          "features": [
+            "Node-level KPI tracking and anomaly detection",
+            "Matplotlib visualisation with persistent polling",
+            "Exportable JSON and CSV logs per simulation run"
+          ],
+          "icons": ["activity", "bar-chart-line", "filetype-csv"]
+        }
+      ] %}
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm border-0 transition-all hover-shadow-sm">
+          <div class="card-body">
+            <h4 class="card-title fw-semibold">{{ project.title }}</h4>
+            <p class="card-text text-muted">{{ project.desc }}</p>
+            <ul class="list-unstyled small mb-3">
+              {% for f, i in project.features|zip(project.icons) %}
+              <li><i class="bi bi-{{ i }} me-2 text-primary"></i>{{ f }}</li>
+              {% endfor %}
+            </ul>
+            <a href="#" class="btn btn-outline-primary btn-sm" aria-label="View details of {{ project.title }}">View Details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

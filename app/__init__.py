@@ -17,7 +17,7 @@ app.jinja_env.filters['zip'] = zip
 
 # Initialise extensions
 db.init_app(app)
-mail=Mail()
+mail=Mail(app)
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
@@ -57,7 +57,7 @@ def contact():
         msg = Message(
             subject=f"[Portfolio] {form.subject.data}",
             sender=form.email.data,
-            recipients=["info@serverafrica.com"],
+            recipients=["imosudi@mioemi.com"],
             body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
         )
         mail.send(msg)
@@ -66,3 +66,13 @@ def contact():
     return render_template("contact.html", form=form)
 
 
+
+# Error handlers
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return render_template('500.html'), 500

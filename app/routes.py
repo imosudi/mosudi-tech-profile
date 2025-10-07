@@ -30,7 +30,7 @@ def contact():
         msg = Message(
             subject=f"[Portfolio] {form.subject.data}",
             sender=form.email.data,
-            recipients=["info@serverafrica.com"],
+            recipients=["imosudi@mioemi.com"],
             body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
         )
         mail.send(msg)

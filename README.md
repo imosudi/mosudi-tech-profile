@@ -1,55 +1,104 @@
 # Mosudi Tech Profile
-**Personal tech profile built with Flask, Bootstrap 5.3.8 and SQLite**  
-Personal tech profile built with Flask, Bootstrap 5, and SQLite — showcasing software development, infrastructure engineering, and IoT expertise by **Isiaka Olukayode Mosudi**.
 
-
-- Repository: `https://github.com/imosudi/mosudi-tech-profile`  
-- Website / domain (planned): `https://mioemi.com`  
-- Contact: `imosudi@outlook.com`
-
----
-
-## Overview
-
-**Mosudi Tech Profile** is a compact, secure and responsive personal portfolio web application built with Flask. It provides:
-
-- A responsive front-end (Bootstrap 5.3.8)
-- A lightweight SQLite data store for projects and basic content
-- Secure authentication using `flask-security-too`
-- A contact form protected by Flask-WTF CSRF
-- Extensible structure for projects, blog posts and admin content
-
-This repository is intended as a minimal, deployable portfolio you can adapt and extend.
+![Flask](https://img.shields.io/badge/Flask-3.0-blue?logo=flask)
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.8-purple?logo=bootstrap)
+![License](https://img.shields.io/badge/License-BSD_2--Clause-green)
+![Status](https://img.shields.io/badge/Status-Active-success)
 
 ---
 
-## Tech stack
+## 🖼️ Preview
 
-- **Backend:** Flask (Python)  
-- **Frontend:** HTML5, Bootstrap 5.3.8, JavaScript  
-- **Database:** SQLite (development)  
-- **Auth:** `flask-security-too`  
-- **Forms:** Flask-WTF  
-- **Environment:** Python 3.10+ (3.11/3.12 supported)  
-- **Licence:** BSD 2-Clause
+| Desktop View | Mobile View |
+|---------------|--------------|
+| ![Desktop Preview](https://www.miocode.site/static/images/preview-desktop.png) | ![Mobile Preview](https://www.miocode.site/static/images/preview-mobile.png) |
 
 ---
 
-## Features
+## 📁 Repository & Contact
 
-- Landing page (hero, skills, featured projects)
-- Projects listing and placeholder detail actions
-- About and Contact pages with secured form
-- User authentication and role support (admin/editor)
-- Clear, modular codebase for easy extension
+- **Repository:** [https://github.com/imosudi/mosudi-tech-profile](https://github.com/imosudi/mosudi-tech-profile)  
+- **Planned Domain:** [https://mioemi.com](https://mioemi.com)  
+- **Contact:** `imosudi@outlook.com`
 
 ---
 
-## Quick start (development)
+## 🧭 Overview
 
-> Tested with Python 3.10 — 3.12. Use a virtual environment.
+**Mosudi Tech Profile** is a compact, secure, and modular Flask web application designed to serve as a digital technical résumé and project portfolio.  
+It provides a simple yet scalable structure for personal branding, research dissemination, and portfolio demonstration.
 
-1. **Clone the repo**
+The project includes:
+
+- Responsive Bootstrap 5.3.8 front-end
+- SQLite database (via Flask-SQLAlchemy)
+- Secure authentication with `flask-security-too`
+- Contact form with CSRF protection (Flask-WTF)
+- Modular structure for projects, blogs, and future admin extensions
+- WSGI-ready deployment (`main.wsgi`)
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|-------|-------------|
+| **Backend** | Flask 3.x (Python 3.10+) |
+| **Frontend** | HTML5, Jinja2, Bootstrap 5.3.8, JavaScript |
+| **Database** | SQLite (development) |
+| **Authentication** | Flask-Security-Too |
+| **Forms & Validation** | Flask-WTF |
+| **Email Support** | Flask-Mail |
+| **Environment** | Python 3.10 – 3.12 |
+| **Licence** | BSD 2-Clause |
+
+---
+
+## ✨ Features
+
+- 🏠 Landing page highlighting skills, research areas, and featured projects  
+- 🧠 Projects listing (adaptive IoT systems, analytics tools, research frameworks, etc.)  
+- 📄 Modular templates for About, Contact, and future Blog sections  
+- 🔒 Secure user authentication with role-based access (admin/editor)  
+- ⚙️ Lightweight SQLite data persistence  
+- 📦 Structured, extensible Flask blueprint architecture  
+- ☁️ WSGI-ready for deployment on Apache, Nginx + Gunicorn, or PythonAnywhere  
+
+---
+
+## 🏗️ Project Structure
+
+```
+mosudi-tech-profile/
+├── app/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── extensions.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── routes.py
+│   ├── static/
+│   └── templates/
+├── instance/
+│   └── mosudi_tech_profile.db
+├── main.py
+├── main.wsgi
+├── requirements.txt
+├── README.md
+└── venv/
+```
+
+> The `app/` directory contains all core Flask logic, static assets, and templates.  
+> The `instance/` folder holds the SQLite database and can store environment-specific configuration.
+
+---
+
+## 🚀 Quick Start (Development)
+
+> Verified on Python 3.10 – 3.12
+
+1. **Clone the repository**
 ```bash
 git clone https://github.com/imosudi/mosudi-tech-profile.git
 cd mosudi-tech-profile
@@ -69,12 +118,12 @@ venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-4. **Create `.env` file**
+4. **Create an `.env` file**
 ```env
-FLASK_APP=app.py
+FLASK_APP=main.py
 FLASK_ENV=development
 SECRET_KEY=replace_with_a_secure_secret
-DATABASE_URL=sqlite:///mosudi_tech_profile.db
+DATABASE_URL=sqlite:///instance/mosudi_tech_profile.db
 SECURITY_PASSWORD_SALT=replace_with_a_password_salt
 MAIL_SERVER=localhost
 MAIL_PORT=25
@@ -83,35 +132,61 @@ MAIL_PASSWORD=
 MAIL_USE_TLS=False
 ```
 
-5. **Initialise the database and run**
+5. **Initialise and run**
 ```bash
-python app.py
+python main.py
 ```
 
-Access on `http://127.0.0.1:5000/`
+Access locally at: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
 ---
 
-## Licence
+## 🌐 Deployment
 
-BSD 2-Clause License
+This application is production-ready using **WSGI**.
 
-Copyright (c) 2025, Isiaka Olukayode Mosudi
-All rights reserved.
+- **Apache / mod_wsgi:** Use `main.wsgi`  
+- **Gunicorn / Nginx:**
+  ```bash
+  gunicorn -w 4 -b 0.0.0.0:5000 main:app
+  ```
+
+Ensure environment variables and database paths are correctly set before deployment.
+
+---
+
+## 🧩 Future Extensions
+
+- Admin dashboard for project and post management  
+- Integration of IoT visual dashboards (Grafana / Flask Charts)  
+- REST API endpoints for project and research data  
+- Blog system with Markdown support  
+- Internationalisation (English, French planned)
+
+---
+
+## 🪪 Licence
+
+**BSD 2-Clause License**
+
+Copyright © 2025  
+**Isiaka Olukayode Mosudi**
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  
 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+> THIS SOFTWARE IS PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.
 
 ---
 
-## Author
+## 👤 Author
 
 **Isiaka Olukayode Mosudi**  
+M.Eng (Communications Engineering) | MSc (IoT & Smart Systems)  
 Vienna, Austria  
-Email: `imosudi@outlook.com`  
-GitHub: [https://github.com/imosudi](https://github.com/imosudi)  
-Website: `https://mioemi.com`
+
+📧 `imosudi@outlook.com`  
+🌐 [https://mioemi.com](https://mioemi.com)  
+💻 [https://github.com/imosudi](https://github.com/imosudi)

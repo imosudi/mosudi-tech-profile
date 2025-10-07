@@ -1,0 +1,26 @@
+# Core Flask Framework
+Flask==3.0.3
+
+# Database ORM
+Flask-SQLAlchemy==3.1.1
+
+# Forms & CSRF Protection
+Flask-WTF==1.2.1
+WTForms==3.1.2
+email-validator==2.2.0
+
+# Authentication & User Management
+Flask-Security-Too==5.4.2
+bcrypt==4.2.0
+passlib==1.7.4
+
+# Optional: Email Support (for future contact form / registration emails)
+Flask-Mail==0.10.0
+
+# Bootstrap Integration (static files, manual include in templates)
+Flask-Bootstrap==3.3.7.1  # optional, since you’re using Bootstrap 5 manually
+
+# Environment Variable Management
+python-dotenv==1.0.1
+
+setuptools>=70.0.0

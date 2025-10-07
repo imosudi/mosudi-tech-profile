@@ -1,0 +1,58 @@
+from curses import flash
+from flask import Flask, render_template, redirect, url_for
+from flask_security import Security, SQLAlchemyUserDatastore
+from extensions import db
+from forms import ContactForm
+from models import User, Role, Project
+from config import Config
+
+app = Flask(__name__)
+app.config.from_object(Config)
+
+# Initialise extensions
+db.init_app(app)
+
+# Setup Flask-Security
+user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+security = Security(app, user_datastore)
+
+# Create database tables before first request (Flask 3.0 compatible)
+with app.app_context():
+    db.create_all()
+    if not user_datastore.find_user(email="admin@example.com"):
+        user_datastore.create_user(
+            email="admin@example.com",
+            password="password123",  # will be hashed by Flask-Security
+        )
+        db.session.commit()
+
+
+
+# Routes
+@app.route('/')
+def index():
+    projects = Project.query.all()
+    return render_template('index.html', title='Home', projects=projects)
+
+@app.route('/about')
+def about():
+    return render_template('about.html', title='About Me')
+
+@app.route('/projects')
+def projects():
+    projects = Project.query.all()
+    return render_template('projects.html', title='Projects', projects=projects)
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        # Placeholder for mail sending or saving to DB
+        flash(f"Message from {form.name.data} sent successfully!", "success")
+        return redirect(url_for('contact'))
+    return render_template('contact.html', title='Contact', form=form)
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

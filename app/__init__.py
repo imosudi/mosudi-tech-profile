@@ -1,5 +1,4 @@
-from curses import flash
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_mail import Message, Mail
 #from app import  mail

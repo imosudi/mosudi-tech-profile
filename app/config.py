@@ -1,4 +1,4 @@
-import os
+import os, time
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -19,6 +19,7 @@ class Config:
 
     # Optional: Email configuration
     MAIL_SERVER = os.getenv("MAIL_SERVER", "localhost")
+    MAIL_USE_SSL = os.getenv("MAIL_USE_SSL", "False") == "True"
     MAIL_PORT = int(os.getenv("MAIL_PORT", 25))
     MAIL_USE_TLS = os.getenv("MAIL_USE_TLS", "False") == "True"
     MAIL_USERNAME = os.getenv("MAIL_USERNAME")

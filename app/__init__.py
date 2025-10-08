@@ -57,7 +57,7 @@ def contact():
         msg = Message(
             subject=f"[Portfolio] {form.subject.data}",
             sender=form.email.data,
-            recipients=["imosudi@mioemi.com"],
+            recipients=["imosudi@gmail.com"],
             body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
         )
         mail.send(msg)
@@ -65,7 +65,18 @@ def contact():
         return redirect(url_for("contact"))
     return render_template("contact.html", form=form)
 
-
+@app.route('/debug-mail')
+def debug_mail():
+    if app.debug:  # Only in development!
+        return {
+            'server': app.config.get('MAIL_SERVER'),
+            'port': app.config.get('MAIL_PORT'),
+            'use_tls': app.config.get('MAIL_USE_TLS'),
+            'use_ssl': app.config.get('MAIL_USE_SSL'),
+            'username': app.config.get('MAIL_USERNAME'),
+            'password_set': bool(app.config.get('MAIL_PASSWORD'))
+        }
+    return "Not available", 403
 
 # Error handlers
 @app.errorhandler(401)

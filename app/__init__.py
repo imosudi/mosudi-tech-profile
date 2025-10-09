@@ -1,3 +1,4 @@
+import os
 import time
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_security import Security, SQLAlchemyUserDatastore
@@ -14,6 +15,14 @@ app.config.from_object(Config)
 # Register 'zip' as a Jinja filter
 app.jinja_env.filters['zip'] = zip
 
+# AWS SES Configuration
+app.config['MAIL_SERVER'] = os.getenv('MIO_MAIL_SERVER', 'email-smtp.us-east-1.amazonaws.com')
+app.config['MAIL_PORT'] = int(os.getenv('MIO_MAIL_PORT', 587))
+app.config['MAIL_USE_TLS'] = os.getenv('MIO_MAIL_USE_TLS', 'True').lower() == 'true'
+app.config['MAIL_USE_SSL'] = os.getenv('MIO_MAIL_USE_SSL', 'False').lower() == 'true'
+app.config['MAIL_USERNAME'] = os.getenv('MIO_MAIL_USERNAME')  # Load from env
+app.config['MAIL_PASSWORD'] = os.getenv('MIO_MAIL_PASSWORD')  # Load from env
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MIO_MAIL_DEFAULT_SENDER', 'info@mioemi.com')
 
 # Initialise extensions
 db.init_app(app)
@@ -53,18 +62,25 @@ def projects():
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        # Example: send email (optional)
-        msg = Message(
-            subject=f"[Portfolio] {form.subject.data}",
-            sender=form.email.data,
-            recipients=["info@mioemi.com"],
-            body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
-        )
-        print('Sending mail...', msg); #time.sleep(200)  # Debug print
-        mail.send(msg)
-        flash("Thank you! Your message has been sent successfully.", "success")
-        return redirect(url_for("contact"))
+        try:
+            # Use your verified sender address, not user's email
+            msg = Message(
+                subject=f"[Portfolio] {form.subject.data}",
+                sender=os.getenv('MIO_MAIL_DEFAULT_SENDER', 'info@mioemi.com'),
+                recipients=["info@mioemi.com"],
+                body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
+                reply_to=form.email.data  # Allow replying to the user
+            )
+            print('Sending mail...', msg)
+            mail.send(msg)
+            flash("Thank you! Your message has been sent successfully.", "success")
+            return redirect(url_for("contact"))
+        except Exception as e:
+            print(f"Error sending email: {e}")
+            flash("Sorry, there was an error sending your message. Please try again.", "error")
+    
     return render_template("contact.html", form=form)
+
 
 @app.route('/debug-mail')
 def debug_mail():

@@ -30,3 +30,4 @@ class Config:
     MIO_MAIL_USE_TLS = os.getenv("MIO_MAIL_USE_TLS", "False") == "True"
     MIO_MAIL_USERNAME = os.getenv("MIO_MAIL_USERNAME")
     MIO_MAIL_PASSWORD = os.getenv("MIO_MAIL_PASSWORD")
+

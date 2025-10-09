@@ -1,3 +1,4 @@
+import time
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_mail import Message, Mail
@@ -59,6 +60,7 @@ def contact():
             recipients=["info@mioemi.com"],
             body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
         )
+        print('Sending mail...', msg); #time.sleep(200)  # Debug print
         mail.send(msg)
         flash("Thank you! Your message has been sent successfully.", "success")
         return redirect(url_for("contact"))

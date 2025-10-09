@@ -56,7 +56,7 @@ def contact():
         msg = Message(
             subject=f"[Portfolio] {form.subject.data}",
             sender=form.email.data,
-            recipients=["imosudi@gmail.com"],
+            recipients=["info@mioemi.com"],
             body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
         )
         mail.send(msg)
@@ -73,8 +73,8 @@ def debug_mail():
             'use_ssl: ', app.config.get('MIO_MAIL_USE_SSL'),
             'username,' , app.config.get('MIO_MAIL_USERNAME'),
             'password_set: ', bool(app.config.get('MIO_MAIL_PASSWORD')))
-    #if app.debug:  # Only in development!
-    return {
+    if app.debug:  # Only in development!
+        return {
             'server': app.config.get('MIO_MAIL_SERVER'),
             'port': app.config.get('MIO_MAIL_PORT'),
             'use_tls': app.config.get('MIO_MAIL_USE_TLS'),

@@ -57,15 +57,6 @@ def message_sent():
 @app.route('/debug-mail')
 def debug_mail():
     """Shows mail configuration for debugging (development only)."""
-    print(
-        'server:', app.config.get('MIO_MAIL_SERVER'),
-        'port:', app.config.get('MIO_MAIL_PORT'),
-        'use_tls:', app.config.get('MIO_MAIL_USE_TLS'),
-        'use_ssl:', app.config.get('MIO_MAIL_USE_SSL'),
-        'username:', app.config.get('MIO_MAIL_USERNAME'),
-        'password_set:', bool(app.config.get('MIO_MAIL_PASSWORD'))
-    )
-
     if app.debug:
         return {
             'server': app.config.get('MIO_MAIL_SERVER'),

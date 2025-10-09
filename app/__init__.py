@@ -75,7 +75,7 @@ def contact():
 
             mail.send(msg)
             flash("Your message has been sent successfully. Redirecting to the homepage...", "success")
-            return redirect(url_for("message_sent"))  # Redirect to status page
+            return redirect(url_for("index"))  # Redirect to status page
         except Exception as e:
             print(f"Error sending email: {e}")
             flash("Sorry, there was an error sending your message. Please try again.", "danger")

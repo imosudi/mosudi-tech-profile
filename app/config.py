@@ -24,9 +24,9 @@ class Config:
     SECURITY_SEND_REGISTER_EMAIL = os.getenv("SECURITY_SEND_REGISTER_EMAIL", "False") == "True"
 
     # Optional: Email configuration
-    MAIL_SERVER = os.getenv("MIO_MAIL_SERVER", "localhost")
-    MAIL_USE_SSL = os.getenv("MIO_MAIL_USE_SSL", "False") == "True"
-    MAIL_PORT = int(os.getenv("MIO_MAIL_PORT", 25))
-    MAIL_USE_TLS = os.getenv("MIO_MAIL_USE_TLS", "False") == "True"
-    MAIL_USERNAME = os.getenv("MIO_MAIL_USERNAME")
-    MAIL_PASSWORD = os.getenv("MIO_MAIL_PASSWORD")
+    MIO_MAIL_SERVER = os.getenv("MIO_MAIL_SERVER", "localhost")
+    MIO_MAIL_USE_SSL = os.getenv("MIO_MAIL_USE_SSL", "False") == "True"
+    MIO_MAIL_PORT = int(os.getenv("MIO_MAIL_PORT", 25))
+    MIO_MAIL_USE_TLS = os.getenv("MIO_MAIL_USE_TLS", "False") == "True"
+    MIO_MAIL_USERNAME = os.getenv("MIO_MAIL_USERNAME")
+    MIO_MAIL_PASSWORD = os.getenv("MIO_MAIL_PASSWORD")

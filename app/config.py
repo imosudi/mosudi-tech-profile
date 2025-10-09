@@ -6,10 +6,10 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 #load_dotenv()
 dotenv_path = join(dirname(__file__), '.env')
-print(dotenv_path); time.sleep(300)
+#print(dotenv_path); time.sleep(300)
 load_dotenv(dotenv_path)
 
-
+print(os.getenv("MIO_SECRET_KEY")); time.sleep(300)
 class Config:
     # Core Flask configuration
     SECRET_KEY = os.getenv("MIO_SECRET_KEY", "default-secret-key")

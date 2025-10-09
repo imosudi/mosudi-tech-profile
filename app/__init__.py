@@ -57,14 +57,11 @@ def about():
 def projects():
     projects = Project.query.all()
     return render_template('projects.html', title='Projects', projects=projects)
-
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
         try:
-            # Use your verified sender address, not user's email
-             # Determine subject line based on selection and input
             subject_category = dict(form.subject_choice.choices).get(form.subject_choice.data, "")
             subject_text = form.subject.data.strip() or subject_category or "General Enquiry"
 
@@ -75,14 +72,21 @@ def contact():
                 body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
                 reply_to=form.email.data
             )
+
             mail.send(msg)
-            flash("Thank you! Your message has been sent successfully.", "success")
-            return redirect(url_for("contact"))
+            flash("Your message has been sent successfully. Redirecting to the homepage...", "success")
+            return redirect(url_for("message_sent"))  # Redirect to status page
         except Exception as e:
             print(f"Error sending email: {e}")
-            flash("Sorry, there was an error sending your message. Please try again.", "error")
-    
+            flash("Sorry, there was an error sending your message. Please try again.", "danger")
+
     return render_template("contact.html", form=form)
+
+
+@app.route("/message-sent")
+def message_sent():
+    """Intermediate success page to confirm email sent before redirect."""
+    return render_template("message_sent.html")
 
 
 @app.route('/debug-mail')

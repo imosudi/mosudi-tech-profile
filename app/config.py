@@ -1,8 +1,14 @@
 import os, time
+
+from os.path import join, dirname
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+#load_dotenv()
+dotenv_path = join(dirname(__file__), '.env')
+#print(dotenv_path); #time.sleep(300)
+load_dotenv(dotenv_path)
+
 
 class Config:
     # Core Flask configuration

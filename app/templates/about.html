@@ -5,90 +5,110 @@
 {% block content %}
 
 <!-- ===== ABOUT SECTION ===== -->
-<section class="py-5 bg-light border-bottom">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-5 mb-4 mb-md-0">
-                <img src="{{ url_for('static', filename='images/personal_smiles.jpg') }}" alt="Mosudi Isiaka - IoT and Intelligent Systems Engineer" class="img-fluid rounded-4 shadow-sm">
-            </div>
-            <div class="col-md-7">
-                <h2 class="fw-bold mb-3">About Me</h2>
-                <p class="lead text-muted">
-                    I’m <strong>Isiaka Olukayode Mosudi</strong> — a systems engineer, software developer, and researcher passionate about the intersection of 
-                    <strong>software engineering, networking, and intelligent systems</strong>. 
-                    My work unites theoretical research with practical implementation to build adaptive, data-driven, and connected systems.
-                </p>
-                <p>
-                    I hold a <strong>Bachelor’s degree in Electrical and Computer Engineering</strong> and a <strong>Master’s in Communication Engineering</strong>. 
-                    Currently, I’m pursuing a <strong>Master’s in IoT and Smart Systems</strong> at <strong>FH Technikum Wien</strong>, where my research explores 
-                    <em>cyber-physical systems, edge computing, and distributed intelligence for smart urban environments</em>.
-                </p>
-                <p>
-                    My professional experience spans <strong>cloud infrastructure design, backend development, and sensor network integration</strong>. 
-                    I have engineered solutions that combine <strong>secure enterprise networking</strong>, 
-                    <strong>Flask-based APIs and microservices</strong>, and <strong>automation pipelines</strong> for intelligent data flow, performance optimisation, and fault resilience.
-                </p>
-                <p class="mb-4">
-                    Beyond systems and software, I’m driven by the vision of building technology that improves quality of life — 
-                    from <strong>IoT-based agricultural systems</strong> that strengthen food security 
-                    to <strong>digital platforms</strong> that empower innovation, learning, and creative communities.
-                </p>
-                <div class="d-flex flex-wrap gap-2">
-                    <a href="{{ url_for('projects') }}" class="btn btn-primary px-4">View My Work</a>
-                    <a href="{{ url_for('contact') }}" class="btn btn-outline-secondary px-4">Get in Touch</a>
-                </div>
-            </div>
+<section class="py-5 bg-light border-bottom" data-aos="fade-up">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-5 mb-4 mb-md-0" data-aos="fade-right" data-aos-delay="100">
+        <img src="{{ url_for('static', filename='images/personal_smiles.jpg') }}" 
+             alt="Mosudi Isiaka - IoT and Intelligent Systems Engineer" 
+             class="img-fluid rounded-4 shadow-sm" 
+             data-tilt 
+             data-tilt-max="10" 
+             data-tilt-speed="400" />
+      </div>
+      <div class="col-md-7" data-aos="fade-left" data-aos-delay="200">
+        <h2 class="fw-bold mb-3">About Me</h2>
+        <p class="lead text-muted">
+          I’m <strong>Isiaka Olukayode Mosudi</strong> — a systems engineer, software developer, and researcher passionate about the intersection of 
+          <strong>software engineering, networking, and intelligent systems</strong>. 
+          My work unites theoretical research with practical implementation to build adaptive, data-driven, and connected systems.
+        </p>
+        <p>
+          I hold a <strong>Bachelor’s degree in Electrical and Computer Engineering</strong> and a <strong>Master’s in Communication Engineering</strong>. 
+          Currently, I’m pursuing a <strong>Master’s in IoT and Smart Systems</strong> at <strong>FH Technikum Wien</strong>, where my research explores 
+          <em>cyber-physical systems, edge computing, and distributed intelligence for smart urban environments</em>.
+        </p>
+        <p>
+          My professional experience spans <strong>cloud infrastructure design, backend development, and sensor network integration</strong>. 
+          I have engineered solutions that combine <strong>secure enterprise networking</strong>, 
+          <strong>Flask-based APIs and microservices</strong>, and <strong>automation pipelines</strong> for intelligent data flow, performance optimisation, and fault resilience.
+        </p>
+        <p class="mb-4">
+          Beyond systems and software, I’m driven by the vision of building technology that improves quality of life — 
+          from <strong>IoT-based agricultural systems</strong> that strengthen food security 
+          to <strong>digital platforms</strong> that empower innovation, learning, and creative communities.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="{{ url_for('projects') }}" class="btn btn-primary px-4">View My Work</a>
+          <a href="{{ url_for('contact') }}" class="btn btn-outline-secondary px-4">Get in Touch</a>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- ===== TECHNICAL FOCUS AREAS ===== -->
-<section class="py-5">
-    <div class="container">
-        <h3 class="fw-semibold mb-4 text-center">Technical Focus Areas</h3>
-        <div class="row g-4 text-center">
-            <div class="col-md-4">
-                <div class="p-4 border rounded-3 bg-white shadow-sm h-100">
-                    <i class="bi bi-diagram-3 display-5 text-primary"></i>
-                    <h5 class="mt-3">Software & Systems Engineering</h5>
-                    <p class="small text-muted mb-0">
-                        Backend architecture, API design, cloud orchestration, and software-defined system automation.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-4 border rounded-3 bg-white shadow-sm h-100">
-                    <i class="bi bi-cpu display-5 text-success"></i>
-                    <h5 class="mt-3">IoT & Smart Systems</h5>
-                    <p class="small text-muted mb-0">
-                        Design and deployment of sensor networks, edge computing architectures, and data-driven control frameworks.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-4 border rounded-3 bg-white shadow-sm h-100">
-                    <i class="bi bi-shield-lock-fill display-5 text-danger"></i>
-                    <h5 class="mt-3">Network & Security Engineering</h5>
-                    <p class="small text-muted mb-0">
-                        Network optimisation, cyber-physical security, and resilient communication infrastructures.
-                    </p>
-                </div>
-            </div>
+<section class="py-5" data-aos="fade-up">
+  <div class="container">
+    <h3 class="fw-semibold mb-4 text-center">Technical Focus Areas</h3>
+    <div class="row g-4 text-center">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="p-4 border rounded-3 bg-white shadow-sm h-100" data-tilt data-tilt-max="8">
+          <i class="bi bi-diagram-3 display-5 text-primary"></i>
+          <h5 class="mt-3">Software & Systems Engineering</h5>
+          <p class="small text-muted mb-0">
+            Backend architecture, API design, cloud orchestration, and software-defined system automation.
+          </p>
         </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="p-4 border rounded-3 bg-white shadow-sm h-100" data-tilt data-tilt-max="8">
+          <i class="bi bi-cpu display-5 text-success"></i>
+          <h5 class="mt-3">IoT & Smart Systems</h5>
+          <p class="small text-muted mb-0">
+            Design and deployment of sensor networks, edge computing architectures, and data-driven control frameworks.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="p-4 border rounded-3 bg-white shadow-sm h-100" data-tilt data-tilt-max="8">
+          <i class="bi bi-shield-lock-fill display-5 text-danger"></i>
+          <h5 class="mt-3">Network & Security Engineering</h5>
+          <p class="small text-muted mb-0">
+            Network optimisation, cyber-physical security, and resilient communication infrastructures.
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- ===== PROFESSIONAL PHILOSOPHY ===== -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <h3 class="fw-semibold mb-4 text-center">Professional Philosophy</h3>
-        <blockquote class="blockquote text-center">
-            <p class="fs-5 fst-italic">
-                “Innovation is not just about new technology — it’s about reimagining how existing systems can serve people better.”
-            </p>
-            <footer class="blockquote-footer mt-3">Mosudi Isiaka</footer>
-        </blockquote>
-    </div>
+<section class="py-5 bg-light" data-aos="fade-up" data-aos-delay="100">
+  <div class="container">
+    <h3 class="fw-semibold mb-4 text-center">Professional Philosophy</h3>
+    <blockquote class="blockquote text-center" data-aos="fade-up" data-aos-delay="200">
+      <p class="fs-5 fst-italic">
+        “Innovation is not just about new technology — it’s about reimagining how existing systems can serve people better.”
+      </p>
+      <footer class="blockquote-footer mt-3">Mosudi Isiaka</footer>
+    </blockquote>
+  </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Toastify popup to show a welcoming message
+    Toastify({
+      text: "Welcome to my professional profile 👋",
+      duration: 3500,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#0d6efd",
+      stopOnFocus: true
+    }).showToast();
+  });
+</script>
 
 {% endblock %}

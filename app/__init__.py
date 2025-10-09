@@ -64,14 +64,17 @@ def contact():
     if form.validate_on_submit():
         try:
             # Use your verified sender address, not user's email
+             # Determine subject line based on selection and input
+            subject_category = dict(form.subject_choice.choices).get(form.subject_choice.data, "")
+            subject_text = form.subject.data.strip() or subject_category or "General Enquiry"
+
             msg = Message(
-                subject=f"[Portfolio] {form.subject.data}",
+                subject=f"[Portfolio] {subject_text}",
                 sender=os.getenv('MIO_MAIL_DEFAULT_SENDER', 'info@mioemi.com'),
                 recipients=["info@mioemi.com"],
                 body=f"From: {form.name.data} <{form.email.data}>\n\n{form.message.data}",
-                reply_to=form.email.data  # Allow replying to the user
+                reply_to=form.email.data
             )
-            print('Sending mail...', msg)
             mail.send(msg)
             flash("Thank you! Your message has been sent successfully.", "success")
             return redirect(url_for("contact"))

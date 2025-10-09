@@ -39,7 +39,22 @@
 
               <!-- Subject -->
               <div class="mb-3">
-                {{ form.subject.label(class="form-label fw-semibold") }}
+                {#{ form.subject.label(class="form-label fw-semibold") }#}
+                <!-- Subject Category -->
+                <div class="mb-3">
+                  {{ form.subject_choice.label(class="form-label fw-semibold") }}
+                  {{ form.subject_choice(class="form-select") }}
+                </div>
+                <!-- Custom Subject -->
+                <div class="mb-3">
+                  {{ form.subject.label(class="form-label fw-semibold") }}
+                  {{ form.subject(class="form-control", placeholder="Custom subject (if 'Other')") }}
+                  {% if form.subject.errors %}
+                    <div class="text-danger small mt-1">
+                      {{ form.subject.errors[0] }}
+                    </div>
+                  {% endif %}
+                </div>
                 {{ form.subject(class="form-control", placeholder="Subject or topic") }}
                 {% if form.subject.errors %}
                   <div class="text-danger small mt-1">
@@ -77,4 +92,19 @@
     </div>
   </div>
 </section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const category = document.querySelector("#subject_choice");
+  const customSubject = document.querySelector("#subject");
+
+  if (category && customSubject) {
+    const toggleCustom = () => {
+      customSubject.closest('.mb-3').style.display = 
+        category.value === "other" ? "block" : "none";
+    };
+    toggleCustom();
+    category.addEventListener("change", toggleCustom);
+  }
+});
+</script>
 {% endblock %}

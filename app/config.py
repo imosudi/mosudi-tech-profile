@@ -9,7 +9,7 @@ dotenv_path = join(dirname(__file__), '.env')
 #print(dotenv_path); time.sleep(300)
 load_dotenv(dotenv_path)
 
-print(os.getenv("SECRET_KEY")); time.sleep(300)
+print(os.getenv("MIO_SECRET_KEY")); time.sleep(300)
 class Config:
     # Core Flask configuration
     SECRET_KEY = os.getenv("MIO_SECRET_KEY", "default-secret-key")

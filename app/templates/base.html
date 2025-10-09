@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mosudi Tech Profile{% endblock %}</title>
 
-    <!-- ===== SEO Meta Tags (Optimised for Personal Technical Portfolio) ===== -->
+    <!-- ===== SEO Meta Tags ===== -->
     <meta name="title" content="Mosudi Isiaka | FullStack, IoT, Edge, & Intelligent Systems Engineer">
-    <meta name="description" content="Explore the portfolio of Mosudi Isiaka — a Systems Engineer and Researcher specialising in IoT, Edge Computing, and Intelligent Systems. Discover innovative projects, research, and open-source work.">
+    <meta name="description" content="Explore the portfolio of Mosudi Isiaka — a Systems Engineer and Researcher specialising in IoT, Edge Computing, and Intelligent Systems.">
     <meta name="keywords" content="Mosudi Isiaka, Mio, IoT Engineer, Edge Computing, Cyber-Physical Systems, AI Research, Smart Systems, Software Engineering, Network Automation, Python Developer, Research Portfolio">
     <meta name="author" content="Mosudi Isiaka">
     <meta name="robots" content="index, follow">
@@ -32,29 +31,22 @@
     <meta name="twitter:description" content="Discover projects, publications, and innovations by Mosudi Isiaka — FullStack, Edge, and Intelligent Systems Engineer.">
     <meta name="twitter:image" content="https://mioemi.com/static/images/og-image.jpg">
 
-
     <!-- Bootstrap 5.3.8 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Toastify CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!-- Favicon -->
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
     <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='favicons/apple-icon-57x57.png') }}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='favicons/apple-icon-60x60.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='favicons/apple-icon-72x72.png') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='favicons/apple-icon-76x76.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='favicons/apple-icon-114x114.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='favicons/apple-icon-120x120.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='favicons/apple-icon-144x144.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='favicons/apple-icon-152x152.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicons/apple-icon-180x180.png') }}">
-    
-    <!-- Standard Favicons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='favicons/android-icon-192x192.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicons/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='favicons/favicon-96x96.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicons/favicon-16x16.png') }}">
-    
+
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ url_for('static', filename='favicons/manifest.json') }}">
     
@@ -62,10 +54,6 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ url_for('static', filename='favicons/ms-icon-144x144.png') }}">
     
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#ffffff">
-
-
     <style>
         body {
             font-family: "Poppins", sans-serif;
@@ -93,6 +81,16 @@
         .card:hover .btn {
             background-color: var(--bs-primary);
             color: #fff;
+        }
+        /* Smooth fade-in animation for success page */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
     </style>
 
@@ -134,21 +132,63 @@
                 <a href="mailto:imosudi@outlook.com">Email</a>
             </p>
             <p class="mb-0">
-            Built with
-            <a href="https://flask.palletsprojects.com/en/stable/" class="text-decoration-none" target="_blank">Flask</a>,
-            <a href="https://www.python.org/" class="text-decoration-none" target="_blank">Python</a>,
-            and
-            <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" class="text-decoration-none" target="_blank">Bootstrap 5.3</a>.
-            Contact page message sent using Flask-Mail via 
-            <a href="https://docs.aws.amazon.com/ses/latest/dg/Welcome.html" class="text-decoration-none" target="_blank">AWS SES</a>. 
-            View the source on
-            <a href="https://github.com/imosudi/mosudi-tech-profile" class="text-decoration-none" target="_blank">GitHub</a>.
-        </p>
+                Built with <a href="https://flask.palletsprojects.com/" target="_blank">Flask</a>, 
+                <a href="https://www.python.org/" target="_blank">Python</a>, and 
+                <a href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3</a>.
+            </p>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- ===== JS Libraries ===== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: true });
+    </script>
+
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        new Typed("#typed-text", {
+          strings: ["Full-Stack Software Developer", "IoT Specialist", "Edge Systems Researcher", "AI-Driven Innovator"],
+          typeSpeed: 60,
+          backSpeed: 35,
+          backDelay: 1500,
+          loop: true
+        });
+      });
+    </script>
+
+    <!-- Toastify -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+      function showToast(message, type="success") {
+        Toastify({
+          text: message,
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          backgroundColor: type === "success" ? "#198754" : "#dc3545",
+        }).showToast();
+      }
+    </script>
+
+    <!-- Vanilla-Tilt -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla-tilt.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+          max: 10,
+          speed: 400,
+          glare: true,
+          "max-glare": 0.2
+        });
+      });
+    </script>
+
     {% block scripts %}{% endblock %}
 </body>
 </html>

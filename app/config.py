@@ -24,10 +24,19 @@ class Config:
     SECURITY_SEND_REGISTER_EMAIL = os.getenv("SECURITY_SEND_REGISTER_EMAIL", "False") == "True"
 
     # Optional: Email configuration
-    MIO_MAIL_SERVER = os.getenv("MIO_MAIL_SERVER", "localhost")
-    MIO_MAIL_USE_SSL = os.getenv("MIO_MAIL_USE_SSL", "False") == "True"
-    MIO_MAIL_PORT = int(os.getenv("MIO_MAIL_PORT", 25))
-    MIO_MAIL_USE_TLS = os.getenv("MIO_MAIL_USE_TLS", "False") == "True"
-    MIO_MAIL_USERNAME = os.getenv("MIO_MAIL_USERNAME")
-    MIO_MAIL_PASSWORD = os.getenv("MIO_MAIL_PASSWORD")
+    #MIO_MAIL_SERVER = os.getenv("MIO_MAIL_SERVER", "localhost")
+    #MIO_MAIL_USE_SSL = os.getenv("MIO_MAIL_USE_SSL", "False") == "True"
+    #MIO_MAIL_PORT = int(os.getenv("MIO_MAIL_PORT", 25))
+    #MIO_MAIL_USE_TLS = os.getenv("MIO_MAIL_USE_TLS", "False") == "True"
+    #MIO_MAIL_USERNAME = os.getenv("MIO_MAIL_USERNAME")
+    #MIO_MAIL_PASSWORD = os.getenv("MIO_MAIL_PASSWORD")
+
+    # AWS SES Configuration
+    MAIL_SERVER = os.getenv('MIO_MAIL_SERVER', 'email-smtp.us-east-1.amazonaws.com')
+    MAIL_PORT = int(os.getenv('MIO_MAIL_PORT', 587))
+    MAIL_USE_TLS = os.getenv('MIO_MAIL_USE_TLS', 'True').lower() == 'true'
+    MAIL_USE_SSL = os.getenv('MIO_MAIL_USE_SSL', 'False').lower() == 'true'
+    MAIL_USERNAME = os.getenv('MIO_MAIL_USERNAME')  # Load from env
+    MAIL_PASSWORD = os.getenv('MIO_MAIL_PASSWORD')  # Load from env
+    MAIL_DEFAULT_SENDER = os.getenv('MIO_MAIL_DEFAULT_SENDER', 'info@mioemi.com')
 

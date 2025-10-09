@@ -16,13 +16,13 @@ app.config.from_object(Config)
 app.jinja_env.filters['zip'] = zip
 
 # AWS SES Configuration
-app.config['MAIL_SERVER'] = os.getenv('MIO_MAIL_SERVER', 'email-smtp.us-east-1.amazonaws.com')
+"""app.config['MAIL_SERVER'] = os.getenv('MIO_MAIL_SERVER', 'email-smtp.us-east-1.amazonaws.com')
 app.config['MAIL_PORT'] = int(os.getenv('MIO_MAIL_PORT', 587))
 app.config['MAIL_USE_TLS'] = os.getenv('MIO_MAIL_USE_TLS', 'True').lower() == 'true'
 app.config['MAIL_USE_SSL'] = os.getenv('MIO_MAIL_USE_SSL', 'False').lower() == 'true'
 app.config['MAIL_USERNAME'] = os.getenv('MIO_MAIL_USERNAME')  # Load from env
 app.config['MAIL_PASSWORD'] = os.getenv('MIO_MAIL_PASSWORD')  # Load from env
-app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MIO_MAIL_DEFAULT_SENDER', 'info@mioemi.com')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MIO_MAIL_DEFAULT_SENDER', 'info@mioemi.com')"""
 
 # Initialise extensions
 db.init_app(app)

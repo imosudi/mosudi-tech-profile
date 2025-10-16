@@ -57,7 +57,7 @@ def message_sent():
 @app.route('/debug-mail')
 def debug_mail():
     """Shows mail configuration for debugging (development only)."""
-    if app.debug:
+    """if app.debug:
         return {
             'server': app.config.get('MIO_MAIL_SERVER'),
             'port': app.config.get('MIO_MAIL_PORT'),
@@ -65,7 +65,7 @@ def debug_mail():
             'use_ssl': app.config.get('MIO_MAIL_USE_SSL'),
             'username': app.config.get('MIO_MAIL_USERNAME'),
             'password_set': bool(app.config.get('MIO_MAIL_PASSWORD'))
-        }
+        }"""
     return "Not available", 403
 # Note: Admin routes for managing projects would go here, protected by authentication.  
 # These are omitted for brevity and focus on the main public routes.    

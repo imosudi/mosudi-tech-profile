@@ -43,6 +43,7 @@ def contact():
             )
             mail.send(msg)
             flash("Thank you! Your message has been sent successfully.", "success")
+            #return redirect(url_for("contact"))
             return redirect(url_for("index"))  # ✅ Go back home
         except Exception as e:
             print(f"Error sending email: {e}")

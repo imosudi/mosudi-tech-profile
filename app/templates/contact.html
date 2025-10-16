@@ -38,7 +38,7 @@
                 {% endif %}
               </div>
 
-              <!-- Subject Section -->
+              <!-- Subject Category -->
               <div class="mb-3">
                 {{ form.subject_choice.label(class="form-label fw-semibold") }}
                 {{ form.subject_choice(class="form-select", id="subject_choice") }}
@@ -91,7 +91,11 @@
   </div>
 </section>
 
-<!-- reCAPTCHA API Script -->
+<!-- Toastify -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<!-- Google reCAPTCHA API -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <!-- Custom Logic -->
@@ -109,10 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
     category.addEventListener("change", toggleCustom);
   }
 
-  // Optional: Toastify success popup
+  // ✅ Toastify success popup
   {% if success_message %}
   Toastify({
-    text: "{{ success_message }}",
+    text: "{{ success_message|escape }}",
     duration: 4000,
     close: true,
     gravity: "top",
@@ -123,4 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
   {% endif %}
 });
 </script>
+
+<style>
+.toastify {
+  border-radius: 8px !important;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+</style>
 {% endblock %}

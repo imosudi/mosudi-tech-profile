@@ -65,7 +65,7 @@
               <!-- Google reCAPTCHA -->
               <div class="mb-4 text-center">
                 <div class="g-recaptcha d-inline-block"
-                     data-sitekey="{{RECAPTCHA_SITE_KEY}}"></div>
+                     data-sitekey="{{ RECAPTCHA_SITE_KEY }}"></div>
                 {% if form.recaptcha.errors %}
                   <div class="text-danger small mt-1">{{ form.recaptcha.errors[0] }}</div>
                 {% endif %}
@@ -81,12 +81,19 @@
       </div>
     </div>
 
-    <!-- Alternate Contact Option -->
+    <!-- Alternate Contact Options -->
     <div class="text-center mt-4">
-      <small class="text-muted">
-        Alternatively, reach me via email at 
-        <a href="mailto:imosudi@outlook.com" class="text-decoration-none fw-semibold">imosudi@outlook.com</a>
+      <small class="text-muted d-block mb-1">
+        Alternatively, reach me via:
       </small>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="mailto:imosudi@outlook.com" class="text-decoration-none fw-semibold text-primary">
+          <i class="bi bi-envelope-fill me-1"></i> imosudi@outlook.com
+        </a>
+        <a href="https://wa.me/4368120662665" target="_blank" class="text-decoration-none fw-semibold text-success">
+          <i class="bi bi-whatsapp me-1"></i>
+        </a>
+      </div>
     </div>
   </div>
 </section>

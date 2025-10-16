@@ -17,6 +17,7 @@
         {
           "title": "Enterprise Network Infrastructure",
           "desc": "A comprehensive configuration and documentation of a multi-VLAN enterprise network architecture integrating routing, NAT, and security controls for a mid-sized organisation.",
+          "url": url_for('network_infra'),
           "features": [
             "Enterprise-class VLAN and IP schema with NAT/PAT routing",
             "Mermaid-based topology visualisation and structured Markdown documentation",
@@ -115,7 +116,7 @@
               <li><i class="bi bi-{{ i }} me-2 text-primary"></i>{{ f }}</li>
               {% endfor %}
             </ul>
-            <a href="#" class="btn btn-outline-primary btn-sm" aria-label="View details of {{ project.title }}">
+            <a href='{{project.url}}' class="btn btn-outline-primary btn-sm" aria-label="View details of {{ project.title }}">
               View Details
             </a>
           </div>

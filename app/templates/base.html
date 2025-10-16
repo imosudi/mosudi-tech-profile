@@ -7,11 +7,13 @@
 
     <!-- ===== SEO Meta Tags ===== -->
     <meta name="title" content="Mosudi Isiaka | FullStack, IoT, Edge, & Intelligent Systems Engineer">
-    <meta name="description" content="Explore the portfolio of Mosudi Isiaka — a Systems Engineer and Researcher specialising in IoT, Edge Computing, and Intelligent Systems.">
+    <meta name="description" content="Explore the portfolio of Mosudi Isiaka — a Networks & Systems Engineer and Researcher specialising in IoT, Edge Computing, and Intelligent Systems.">
     <meta name="keywords" content="Mosudi Isiaka, Mio, IoT Engineer, Edge Computing, Cyber-Physical Systems, AI Research, Smart Systems, Software Engineering, Network Automation, Python Developer, Research Portfolio">
     <meta name="author" content="Mosudi Isiaka">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0F172A">
+    <link rel="canonical" href="https://mioemi.com">
+    <meta name="language" content="English">
 
     <!-- ===== Open Graph (Facebook, LinkedIn, etc.) ===== -->
     <meta property="og:type" content="website">
@@ -62,7 +64,7 @@
 
         /* === Enhanced Navbar === */
         nav.navbar {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #5b6fe3 0%, #8154a2 50%, #f3a6fb 100%);
             box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
             padding: 1rem 0;
             position: relative;
@@ -177,7 +179,10 @@
 
         /* === Enhanced Footer === */
         footer {
-            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+            /*background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);*/
+            background: linear-gradient(135deg, #5b6fe3 0%, #8154a2 50%, #f3a6fb 100%);
+            box-shadow: 0 -4px 20px rgba(102, 126, 234, 0.4);
+            font-size: 0.95rem;
             color: #e0e7ff;
             padding: 2.5rem 0 1.5rem;
             position: relative;
@@ -334,9 +339,9 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}" aria-label="About Mosudi">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}" aria-label="Selected Projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}" aria-label="Contact Mosudi">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -362,9 +367,9 @@
                 Built with 
                 <a href="https://flask.palletsprojects.com/" target="_blank">Flask</a>, 
                 <a href="https://www.python.org/" target="_blank">Python</a>, and 
-                <a href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3</a>
-                <span class="separator">•</span>
-                Messages sent via 
+                <a href="https://getbootstrap.com/" target="_blank">Bootstrap </a>
+                <span class="separator"> — </span>
+                Contact Me messages powered by
                 <a href="https://docs.aws.amazon.com/ses/latest/dg/Welcome.html" target="_blank">AWS SES</a>
                 <span class="separator">•</span>
                 View source on
@@ -378,8 +383,19 @@
         </div>
     </footer>
 
+    <button id="backToTop" class="btn btn-primary position-fixed bottom-0 end-0 m-4" style="display:none;">
+  <i class="bi bi-arrow-up"></i>
+</button>
+<script>
+  const btn = document.getElementById('backToTop');
+  window.onscroll = () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; };
+  btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+</script>
+
+
     <!-- ===== JS Libraries ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
+
 
     <!-- AOS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -427,6 +443,21 @@
         });
       });
     </script>
+
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Isiaka  Mosudi",
+        "url": "https://mioemi.com",
+        "sameAs": [
+            "https://github.com/imosudi",
+            "https://www.linkedin.com/in/isiaka-mosudi/"
+        ],
+        "jobTitle": "FullStack, IoT, Edge & Intelligent Systems Engineer"
+        }
+    </script>
+
 
     {% block scripts %}{% endblock %}
 </body>

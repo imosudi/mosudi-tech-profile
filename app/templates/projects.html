@@ -26,6 +26,29 @@
           "icons": ["diagram-3", "shield-lock", "hdd-network"]
         },
         {
+          "title": "Own Virtualisation Infrastructure",
+          "desc": "Implementation of a self-managed KVM-based virtualisation environment spanning MTN Nigeria Data Centre and a remote UK colocation facility, achieving high availability through GlusterFS block replication.",
+          "url": url_for('kvm_gluster_infra'),
+          "features": [
+            "Dual-site virtualisation with KVM and libvirt on Ubuntu Server",
+            "GlusterFS replicated storage for high availability and fault tolerance",
+            "Vyatta Router OS and pfSense integration for routing, VPN, and firewalling"
+          ],
+          "icons": ["hdd-network", "router", "shield-lock"]
+        },
+        {
+          "title": "Infrastructure Monitoring & Alerting System",
+          "desc": "A scalable network and server monitoring solution built on Icinga2, providing distributed monitoring, flexible alerting, and comprehensive infrastructure visibility.",
+          "url": url_for('infra_monitoring'),
+          "features": [
+            "Icinga2 core with distributed monitoring and high-availability setup",
+            "Multi-channel alerting (email, Slack, PagerDuty) with escalation rules",
+            "Docker-based deployment with agent auto-discovery and role-based dashboards",
+            "Icinga Web 2 interface with custom dashboards and performance data visualisation"
+          ],
+          "icons": ["bar-chart", "bell", "docker", "server"]
+        },
+        {
           "title": "IoT-Based Adaptive Sensor Network",
           "desc": "A smart agricultural monitoring framework designed for West African farm settlements. The system uses adaptive sensing algorithms to optimise sensor sleep cycles based on environmental conditions — balancing power efficiency and data reliability.",
           "features": [

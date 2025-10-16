@@ -1,0 +1,441 @@
+{% extends "base.html" %}
+{% block title %}Icinga2 Monitoring Infrastructure - {{ super() }}{% endblock %}
+{% block content %}
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-primary mb-3">Icinga2 Monitoring Infrastructure</h1>
+      <p class="text-muted lead">
+        A comprehensive distributed monitoring solution using Icinga2 and Icinga Web 2 deployed across AWS EC2 and Docker containers for enterprise-grade service monitoring.
+      </p>
+    </div>
+
+    <!-- Project Hero Image -->
+    <div class="text-center mb-5">
+      <img src="{{ url_for('static', filename='images/infra_monitoring_project.png') }}" 
+           alt="Icinga2 Monitoring Infrastructure" 
+           class="img-fluid rounded shadow-sm" 
+           style="max-height: 420px; object-fit: cover;">
+    </div>
+
+    <!-- Project Overview -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Project Overview</h3>
+            <p>
+              This project implements a <strong>distributed monitoring infrastructure</strong> using Icinga2 and Icinga Web 2 
+              across multiple environments. The architecture consists of a master monitoring server on AWS EC2 and two Docker 
+              containerized clients (web and database servers) running Ubuntu 14.04.4 LTS.
+            </p>
+            <p>
+              The monitoring solution provides real-time service health checks for Apache2 web services and MySQL database 
+              servers, with a centralized web interface for visualization and alerting. The deployment leverages Docker 
+              containers for isolated monitoring targets while maintaining seamless communication through network configuration.
+            </p>
+            <p class="mb-0">
+              <strong>Platform:</strong> AWS EC2 + Docker | 
+              <strong>OS:</strong> Ubuntu 14.04.4 LTS (Trusty Tahr) | 
+              <strong>Monitoring Targets:</strong> HTTP & MySQL Services
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Infrastructure Architecture -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Infrastructure Architecture</h3>
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <div class="card h-100 bg-light border-0">
+                  <div class="card-body">
+                    <h6 class="fw-semibold text-primary mb-3">
+                      <i class="bi bi-cloud"></i> Master Server
+                    </h6>
+                    <ul class="small mb-0">
+                      <li><strong>Platform:</strong> AWS EC2</li>
+                      <li><strong>OS:</strong> Ubuntu 14.04.4 LTS</li>
+                      <li><strong>Role:</strong> Icinga2 Master + Web Interface</li>
+                      <li><strong>Hostname:</strong> ip-172-31-46-140</li>
+                      <li><strong>IP:</strong> 172.17.0.1</li>
+                      <li><strong>Services:</strong> Icinga2, Icinga Web 2, LAMP Stack</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="card h-100 bg-light border-0">
+                  <div class="card-body">
+                    <h6 class="fw-semibold text-success mb-3">
+                      <i class="bi bi-server"></i> Web Server (mosudi.web)
+                    </h6>
+                    <ul class="small mb-0">
+                      <li><strong>Platform:</strong> Docker Container</li>
+                      <li><strong>OS:</strong> Ubuntu 14.04.4 LTS</li>
+                      <li><strong>Role:</strong> Apache2 Web Server</li>
+                      <li><strong>Hostname:</strong> web.mosudi</li>
+                      <li><strong>IP:</strong> 172.17.0.2</li>
+                      <li><strong>Ports:</strong> 804:80, 10004:10000</li>
+                      <li><strong>Monitored Service:</strong> HTTP</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="card h-100 bg-light border-0">
+                  <div class="card-body">
+                    <h6 class="fw-semibold text-info mb-3">
+                      <i class="bi bi-database"></i> Database Server (mosudi.db)
+                    </h6>
+                    <ul class="small mb-0">
+                      <li><strong>Platform:</strong> Docker Container</li>
+                      <li><strong>OS:</strong> Ubuntu 14.04.4 LTS</li>
+                      <li><strong>Role:</strong> MySQL Database Server</li>
+                      <li><strong>Hostname:</strong> db.mosudi</li>
+                      <li><strong>IP:</strong> 172.17.0.3</li>
+                      <li><strong>Ports:</strong> 805:80, 10005:10000, 3309:3306</li>
+                      <li><strong>Monitored Service:</strong> MySQL</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Features -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h3 class="fw-semibold text-primary text-center mb-4">Key Features</h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <div class="mb-3 text-primary">
+                <i class="bi bi-diagram-3" style="font-size:2rem;"></i>
+              </div>
+              <h6 class="fw-semibold">Distributed Monitoring</h6>
+              <p class="small text-muted">
+                Master-client architecture with Icinga2 deployed across AWS EC2 and Docker containers, 
+                enabling scalable and isolated monitoring targets.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <div class="mb-3 text-primary">
+                <i class="bi bi-speedometer2" style="font-size:2rem;"></i>
+              </div>
+              <h6 class="fw-semibold">Service Health Monitoring</h6>
+              <p class="small text-muted">
+                Real-time monitoring of Apache2 HTTP services and MySQL database connectivity with 
+                customized health checks and performance metrics.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <div class="mb-3 text-primary">
+                <i class="bi bi-browser-chrome" style="font-size:2rem;"></i>
+              </div>
+              <h6 class="fw-semibold">Web-Based Dashboard</h6>
+              <p class="small text-muted">
+                Icinga Web 2 interface with MySQL IDO backend for centralized monitoring visualization, 
+                alerting, and comprehensive reporting capabilities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Installation Highlights -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Installation & Configuration Highlights</h3>
+            
+            <h6 class="fw-semibold mt-4 mb-3">Core Components Installed</h6>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="small">
+                  <li><strong>Icinga2 Core:</strong> Main monitoring engine</li>
+                  <li><strong>Icinga Web 2:</strong> Web interface and dashboard</li>
+                  <li><strong>LAMP Stack:</strong> Apache, MySQL, PHP via tasksel</li>
+                  <li><strong>Nagios Plugins:</strong> Standard monitoring plugins</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="small">
+                  <li><strong>MySQL IDO:</strong> Database backend for Icinga2</li>
+                  <li><strong>Webmin:</strong> Web-based system administration</li>
+                  <li><strong>PHPMyAdmin:</strong> Database management interface</li>
+                  <li><strong>Docker:</strong> Container runtime for clients</li>
+                </ul>
+              </div>
+            </div>
+
+            <h6 class="fw-semibold mt-4 mb-3">Key Configuration Steps</h6>
+            <div class="accordion" id="configAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                    Repository & Package Setup
+                  </button>
+                </h2>
+                <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#configAccordion">
+                  <div class="accordion-body small">
+                    <ul>
+                      <li>Added Icinga2 official repository: packages.icinga.org</li>
+                      <li>Configured PPA: ppa:formorer/icinga</li>
+                      <li>Updated package lists and upgraded system</li>
+                      <li>Installed build-essential and development tools</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                    Database & IDO Configuration
+                  </button>
+                </h2>
+                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#configAccordion">
+                  <div class="accordion-body small">
+                    <ul>
+                      <li>Created 'icinga' database with appropriate privileges</li>
+                      <li>Imported MySQL IDO schema from /usr/share/icinga2-ido-mysql/schema/</li>
+                      <li>Configured ido-mysql.conf with database credentials</li>
+                      <li>Enabled ido-mysql feature: <code>icinga2 feature enable ido-mysql</code></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                    Docker Client Setup
+                  </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#configAccordion">
+                  <div class="accordion-body small">
+                    <ul>
+                      <li>Created Docker containers with specific hostnames and port mappings</li>
+                      <li>Installed LAMP stack using <code>apt-get install lamp-server^</code></li>
+                      <li>Configured timezone with tzdata for accurate logging</li>
+                      <li>Edited /etc/hosts for name resolution across all servers</li>
+                      <li>Installed Icinga2 and Nagios plugins on each container</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                    Monitoring Configuration
+                  </button>
+                </h2>
+                <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#configAccordion">
+                  <div class="accordion-body small">
+                    <ul>
+                      <li>Modified hosts.conf to define monitoring targets</li>
+                      <li>Configured services.conf with HTTP and MySQL service checks</li>
+                      <li>Added custom MySQL monitoring service with database connectivity checks</li>
+                      <li>Commented out unnecessary services to focus on specific targets</li>
+                      <li>Ran <code>icinga2 node wizard</code> to setup master node</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monitoring Services -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Monitored Services</h3>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="table-light">
+                  <tr>
+                    <th>Client Server</th>
+                    <th>Service Type</th>
+                    <th>Check Command</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge bg-success">mosudi.web</span></td>
+                    <td>HTTP</td>
+                    <td><code>check_http</code></td>
+                    <td>Apache2 web server availability and response time monitoring</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-info">mosudi.db</span></td>
+                    <td>MySQL</td>
+                    <td><code>check_mysql</code></td>
+                    <td>MySQL database connectivity and service health monitoring</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="small text-muted mt-3 mb-0">
+              <i class="bi bi-info-circle"></i> All other default services were disabled to focus monitoring on specific 
+              application-critical services. Configuration files: <code>/etc/icinga2/conf.d/hosts.conf</code> and 
+              <code>/etc/icinga2/conf.d/services.conf</code>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Network Topology Diagram -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h3 class="fw-semibold text-primary mb-3">Network Topology</h3>
+            <div class="mermaid text-center">
+              graph TB
+                Internet((Internet))
+                
+                subgraph AWS["AWS EC2 Instance"]
+                  Master["Icinga2 Master Server<br/>ip-172-31-46-140<br/>172.17.0.1"]
+                  WebUI["Icinga Web 2<br/>Dashboard"]
+                  MySQL_IDO["MySQL IDO<br/>Database"]
+                end
+                
+                subgraph Docker["Docker Environment"]
+                  WebServer["Web Server Container<br/>mosudi.web<br/>172.17.0.2<br/>Ports: 804:80, 10004:10000"]
+                  DBServer["Database Server Container<br/>mosudi.db<br/>172.17.0.3<br/>Ports: 805:80, 10005:10000, 3309:3306"]
+                end
+                
+                Internet --> Master
+                Master --> WebUI
+                Master --> MySQL_IDO
+                Master -.->|Monitor HTTP| WebServer
+                Master -.->|Monitor MySQL| DBServer
+                
+                WebServer -->|Apache2| WebService[HTTP Service]
+                DBServer -->|MySQL| DBService[Database Service]
+                
+                style Master fill:#e3f2fd
+                style WebServer fill:#e8f5e9
+                style DBServer fill:#e1f5fe
+                style WebUI fill:#fff3e0
+                style MySQL_IDO fill:#fce4ec
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technologies Used -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h3 class="fw-semibold text-primary text-center mb-4">Technologies Used</h3>
+        <ul class="list-inline text-center">
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-primary fs-6">Icinga2</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-info text-dark fs-6">Icinga Web 2</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-warning text-dark fs-6">AWS EC2</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-dark fs-6">Docker</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-secondary fs-6">Ubuntu 14.04 LTS</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-success fs-6">Apache2</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-danger fs-6">MySQL</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-light text-dark fs-6">PHP</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-primary fs-6">Nagios Plugins</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-secondary fs-6">Webmin</span></li>
+          <li class="list-inline-item mx-2 mb-2"><span class="badge bg-info text-dark fs-6">PHPMyAdmin</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Technical Implementation -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Technical Implementation</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">Master Server Setup</h6>
+                <ul class="small">
+                  <li>Icinga2 installed with IDO MySQL backend</li>
+                  <li>Icinga Web 2 with authentication and monitoring modules</li>
+                  <li>Setup wizard completed via web interface</li>
+                  <li>Node wizard configured for master role</li>
+                  <li>SNMP and NTP services configured</li>
+                </ul>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">Client Configuration</h6>
+                <ul class="small">
+                  <li>Docker containers with isolated networking</li>
+                  <li>LAMP stack deployed on each container</li>
+                  <li>Icinga2 agents with Nagios plugins</li>
+                  <li>Custom service definitions in conf.d directory</li>
+                  <li>Host resolution via /etc/hosts configuration</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">Security & Access</h6>
+                <ul class="small">
+                  <li>Webmin for web-based system administration</li>
+                  <li>MySQL root authentication configured</li>
+                  <li>Separate database users for Icinga2 and applications</li>
+                  <li>PHPMyAdmin for database management</li>
+                </ul>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">Monitoring Features</h6>
+                <ul class="small">
+                  <li>Service health checks with configurable intervals</li>
+                  <li>Custom MySQL database connectivity monitoring</li>
+                  <li>HTTP response time and availability tracking</li>
+                  <li>Real-time alerting and notification system</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center">
+      <a href="{{ url_for('projects') }}" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Back to Projects
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Mermaid.js Script -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+</script>
+
+{% endblock %}

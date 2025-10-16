@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+{% block title %}Own Virtualisation Infrastructure — Portfolio{% endblock %}
+{% block content %}
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-primary mb-3">Own Virtualisation Infrastructure</h1>
+      <p class="text-muted lead">
+        KVM virtualisation on Ubuntu Server with GlusterFS-backed replicated storage across MTN Nigeria (Lagos) and Rimu Hosting (UK). Includes pfSense VPN, Vyatta routing, Icinga2 monitoring, hosting control panel and 24/7 operational support.
+      </p>
+    </div>
+
+    <!-- Hero Image / Topology Placeholder -->
+    <div class="text-center mb-5">
+      <img src="{{ url_for('static', filename='images/network_service_topology.png') }}" 
+           alt="Network & Service Topology (placeholder)" 
+           class="img-fluid rounded shadow-sm" 
+           style="max-height:420px; object-fit:cover;">
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Executive summary</h3>
+            <p class="small text-muted mb-0">
+              This portfolio documents the deployment of a self-managed virtualisation platform using <strong>KVM/QEMU</strong> on Ubuntu Server across two physically separated hosts:
+              <strong>MTN Nigeria DC, Ojota (Lagos)</strong> — primary on-premises node with physical access, and <strong>Rimu Hosting (UK)</strong> — remote replication node provisioned with root access.
+              VM disk images are stored on a <strong>GlusterFS</strong> replicated volume over an encrypted site-to-site VPN (pfSense). Core services include web & mail hosting (control panel), NAS, Vyatta routing, pfSense firewall, and a centralised <strong>Icinga2</strong> monitoring stack. Routine maintenance is performed during off-hours and 24/7 on-call support is provided.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Objectives -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Key objectives</h3>
+            <ul class="small">
+              <li>Achieve geographical redundancy and fault tolerance for VM disk images via GlusterFS replication across Lagos and UK nodes.</li>
+              <li>Host essential services (web, mail, NAS, enterprise apps) as virtual machines on KVM.</li>
+              <li>Secure cross-site replication using an encrypted site-to-site VPN (pfSense).</li>
+              <li>Implement central monitoring and alerting with Icinga2 and provide 24/7 on-call operations.</li>
+              <li>Document repeatable deployment steps suitable for automation (future Ansible playbooks).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- High-level architecture -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">High-level architecture</h3>
+            <p class="small text-muted">
+              The architecture comprises two primary sites connected by an encrypted tunnel: the Lagos (primary) KVM host and the UK (replica) KVM host. Each host runs Ubuntu Server LTS, KVM/libvirt, GlusterFS bricks and a pfSense VM for the VPN endpoint. VMs are stored on a GlusterFS replicated volume mounted on the libvirt storage directory. Icinga2 runs as the central monitoring master on Lagos with remote checks for the UK node.
+            </p>
+
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <h6 class="fw-semibold">Primary site</h6>
+                <ul class="small mb-0">
+                  <li>Location: MTN Nigeria DC, Ojota, Lagos (physical access).</li>
+                  <li>Role: Compute & primary storage, Icinga2 master, control panel VM.</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h6 class="fw-semibold">Secondary site</h6>
+                <ul class="small mb-0">
+                  <li>Location: Rimu Hosting, UK (remote root access).</li>
+                  <li>Role: Replicated storage brick, DR VMs and remote monitoring checks.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hardware & Software -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Hardware & software</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <h6 class="fw-semibold">Hardware (example specifications)</h6>
+                <ul class="small">
+                  <li>MTN (Lagos) bare-metal: Dual-socket modern CPU, ≥128 GB RAM, multiple NICs (1Gb/10Gb), NVMe + HDD storage, BMC/iLO for OOB management.</li>
+                  <li>Rimu (UK) node: Virtualisation-capable server with root access, adequate bandwidth for replication.</li>
+                  <li>Networking: Dedicated management VLAN, replication VLAN, and public-facing WAN segment.</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h6 class="fw-semibold">Software stack</h6>
+                <ul class="small">
+                  <li>Host OS: Ubuntu Server LTS (recommended 22.04+).</li>
+                  <li>Hypervisor: KVM/QEMU, libvirt, virt-manager (for management).</li>
+                  <li>Distributed storage: GlusterFS (replicated volumes).</li>
+                  <li>Routing & firewall: Vyatta (routing VM), pfSense (firewall & VPN).</li>
+                  <li>Monitoring: Icinga2 + Icinga Web 2.</li>
+                  <li>Control panel: ISPConfig / Virtualmin / Virtualmin GPL (as chosen).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deployment summary -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Deployment summary</h3>
+            <ol class="small mb-0">
+              <li>Installed Ubuntu Server on both bare-metal hosts; applied basic hardening and SSH key-based authentication.</li>
+              <li>Installed and configured KVM/libvirt, set up network bridges for VM connectivity.</li>
+              <li>Provisioned pfSense VMs on both sites and established an encrypted site-to-site VPN (IPsec/OpenVPN as required).</li>
+              <li>Installed GlusterFS on both hosts; created a replicated Gluster volume for VM images and started the volume.</li>
+              <li>Mounted the Gluster volume on both hosts as the libvirt storage pool.</li>
+              <li>Deployed VMs (Linux and Windows Server) for web, mail, NAS, Vyatta, and enterprise applications with images stored on the Gluster volume.</li>
+              <li>Installed and configured Icinga2 for host and service monitoring; configured notification channels and escalation runbooks.</li>
+              <li>Tested replication, failover and routine maintenance procedures; scheduled off-hours maintenance windows.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security, backups and operations -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Security, backups and operations</h3>
+            <p class="small text-muted">
+              Security is implemented in layers: host hardening & SSH key-only access; pfSense-managed firewall rules and VPN encryption for replication traffic; VM-level security for services (TLS/SSL, secure mail setup). Backups include regular VM snapshots, database dumps sent to an offsite backup repository and periodic Gluster heal checks. An on-call rota ensures 24/7 response to Icinga2 alerts.
+            </p>
+            <ul class="small">
+              <li>Management interfaces restricted to a management VLAN and bastion hosts.</li>
+              <li>Automatic snapshots before major updates; snapshot retention policy defined.</li>
+              <li>Encrypted off-site backups of critical data and configuration backups of network appliances.</li>
+              <li>Patch & maintenance schedule executed during agreed off-hours.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Recommendations</h3>
+            <ul class="small">
+              <li>Automate deployments and configuration management using Ansible to ensure repeatability and faster recovery.</li>
+              <li>Consider Ceph for larger-scale storage and higher resilience (three or more nodes) if capacity grows.</li>
+              <li>Add a third geographically-dispersed node for Gluster quorum and improved failover behaviour.</li>
+              <li>Instrument detailed telemetry (I/O, latency, replication metrics) and visualise trends to inform scaling decisions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concise operational checklist -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Concise operational checklist</h3>
+            <ul class="small mb-0">
+              <li>Check Gluster peer & volume status: <code>gluster peer status</code>, <code>gluster volume status</code>.</li>
+              <li>Verify volume heal information: <code>gluster volume heal gv0 info</code>.</li>
+              <li>Confirm VM state: <code>virsh list --all</code> and virt-manager connection.</li>
+              <li>Ensure Icinga2 is running: <code>systemctl status icinga2</code>.</li>
+              <li>Run snapshot before major updates and test restore on a staging host.</li>
+              <li>Validate VPN connectivity and throughput for replication windows.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Network & Service Topology (image placeholder + optional Mermaid) -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Network & Service Topology</h3>
+
+            <div class="text-center mb-3">
+              <img src="{{ url_for('static', filename='images/network_service_topology.png') }}" 
+                   alt="Network & Service Topology" 
+                   class="img-fluid rounded shadow-sm" 
+                   style="max-height:420px; object-fit:contain;">
+            </div>
+
+            <!-- Optional Mermaid diagram (can be removed if using SVG only) -->
+            <div class="mermaid text-center small">
+              %% Example Mermaid diagram — replace or remove if embedding SVG
+              graph LR
+                LA[MTN Lagos KVM Host]
+                UK[Rimu UK KVM Host]
+                VPN(pfSense VPN)
+                Gluster[GlusterFS Replicated Volume]
+                Icinga[Icinga2 Master]
+                LA --> Gluster
+                UK --> Gluster
+                LA --> Icinga
+                LA --> VPN --> UK
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GlusterFS replication topology (image placeholder + optional Mermaid) -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">GlusterFS replication topology</h3>
+
+            <div class="text-center mb-3">
+              <img src="{{ url_for('static', filename='images/gluster_replication_topology.png') }}" 
+                   alt="GlusterFS Replication Topology" 
+                   class="img-fluid rounded shadow-sm" 
+                   style="max-height:360px; object-fit:contain;">
+            </div>
+
+            <p class="small text-muted mb-0">
+              The production configuration uses a <strong>replica 2</strong> GlusterFS volume with bricks on both Lagos and UK nodes. Quorum considerations and tie-breaker or arbiter strategies are noted for production-grade deployments (see full report).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Selected concise configuration snippets -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Selected concise configuration snippets</h3>
+
+            <h6 class="fw-semibold">Install KVM, libvirt and virt-manager (hosts and desktop)</h6>
+            <pre class="small bg-light p-3 rounded"><code># On both Ubuntu Server hosts (LTS)
+sudo apt update
+sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst
+sudo systemctl enable --now libvirtd
+
+# On the network engineer's Ubuntu Desktop (for GUI management)
+sudo apt update
+sudo apt install -y virt-manager
+
+# To allow remote libvirt connections from the desktop to the host:
+# 1) Configure libvirtd on the host to listen (edit /etc/libvirt/libvirtd.conf):
+#    listen_tls = 0
+#    listen_tcp = 1
+#    auth_tcp = "none"   # prefer sasl or polkit; use SSH tunnel for security
+# 2) Restart libvirt:
+sudo systemctl restart libvirtd
+
+# Recommended secure method: SSH tunnel from desktop:
+# From desktop: establish SSH tunnel and connect virt-manager to qemu+ssh://user@host/system
+ssh -fNL 16509:localhost:16509 user@host.example.com -p 22
+# Then in virt-manager, open connection: qemu+tcp://localhost/system (or use qemu+ssh)
+</code></pre>
+
+            <h6 class="fw-semibold mt-3">Basic GlusterFS (peer probe & create replicated volume)</h6>
+            <pre class="small bg-light p-3 rounded"><code># Install GlusterFS on both hosts
+sudo apt update
+sudo apt install -y glusterfs-server
+sudo systemctl enable --now glusterd
+
+# On Lagos host:
+sudo gluster peer probe uk-host.example.com
+
+# Create replicated volume (example)
+sudo mkdir -p /srv/gluster/gv0/brick
+sudo mkdir -p /srv/gluster/gv0/brick
+
+sudo gluster volume create gv0 replica 2 transport tcp \
+  lagos.example.com:/srv/gluster/gv0/brick \
+  uk.example.com:/srv/gluster/gv0/brick
+
+sudo gluster volume start gv0
+sudo gluster volume status gv0
+</code></pre>
+
+            <h6 class="fw-semibold mt-3">Mount Gluster volume on host for libvirt storage</h6>
+            <pre class="small bg-light p-3 rounded"><code># Create mount point and mount (on each host)
+sudo mkdir -p /var/lib/libvirt/images
+sudo mount -t glusterfs lagos.example.com:/gv0 /var/lib/libvirt/images
+
+# Persist in /etc/fstab (example):
+lagos.example.com:/gv0  /var/lib/libvirt/images  glusterfs  defaults,_netdev  0  0
+</code></pre>
+
+            <h6 class="fw-semibold mt-3">Create a VM using virt-install (CLI) and using virt-manager (GUI)</h6>
+            <pre class="small bg-light p-3 rounded"><code># CLI example: create a Linux VM with virt-install
+virt-install \
+  --name web01 \
+  --ram 8192 \
+  --vcpus 2 \
+  --disk path=/var/lib/libvirt/images/web01.qcow2,size=60,format=qcow2 \
+  --os-type linux --os-variant ubuntu22.04 \
+  --network bridge=br0 \
+  --graphics none \
+  --console pty,target_type=serial \
+  --cdrom /path/to/ubuntu-server.iso
+
+# GUI: open virt-manager on the engineer desktop, connect via SSH or direct libvirt endpoint,
+# choose 'New VM', select installation method (ISO), allocate CPU/RAM/disk on the Gluster-mounted pool.
+</code></pre>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Short summary -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Short summary</h3>
+            <p class="small text-muted mb-0">
+              This summarises my deployment of a two-site KVM virtualisation deployment with GlusterFS replication, secure VPN connectivity, centralised monitoring and operational processes. It is intended for review prior to producing the full technical report containing exhaustive configuration files, test results and automation artefacts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center">
+      <a href="{{ url_for('projects') }}" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Back to Projects
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Mermaid.js Script (optional; remove if not needed) -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+</script>
+
+{% endblock %}

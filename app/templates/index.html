@@ -61,6 +61,22 @@
     <div class="row g-4">
 
       <!-- Enterprise Network Infrastructure -->
+       <!-- Own Virtualisation Infrastructure -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 border-0">
+            <img src="{{ url_for('static', filename='images/kvm_gluster_infra_project.png') }}"
+                class="card-img-top"
+                alt="KVM and GlusterFS Virtualisation Infrastructure">
+            <div class="card-body">
+                <h5 class="card-title">Own Virtualisation Infrastructure</h5>
+                <p class="card-text small text-muted">
+                A self-managed KVM-based virtualisation setup spanning geographically separated colocation facilities, ensuring redundancy with GlusterFS replication.
+                </p>
+                <a href="{{ url_for('kvm_gluster_infra') }}" class="btn btn-outline-primary btn-sm">Learn More</a>
+            </div>
+            </div>
+        </div>
+      
       <div class="col-md-4">
         <div class="card shadow-sm h-100 border-0">
           <img src="{{ url_for('static', filename='images/enterprise_network_project.png') }}"
@@ -81,6 +97,25 @@
         </div>
       </div>
 
+
+       <!-- Infrastructure Monitoring & Alerting System -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 border-0">
+                <img src="{{ url_for('static', filename='images/infra_monitoring_project.png') }}"
+                    class="card-img-top"
+                    alt="Infrastructure Monitoring and Alerting Dashboard">
+                <div class="card-body">
+                    <h5 class="card-title">Infra. Monitoring & Alerting System</h5>
+                    <p class="card-text small text-muted">
+                    A scalable network and server monitoring solution built on Icinga2, providing flexible distributed monitoring.
+                    </p>
+                    <a href="{{ url_for('infra_monitoring') }}" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+       
+        
       <!-- IoT-Based Adaptive Sensor Network -->
       <div class="col-md-4">
         <div class="card shadow-sm h-100 border-0">
@@ -96,6 +131,15 @@
           </div>
         </div>
       </div>
+
+      <div class="col-md-4">
+            <div class="card shadow-sm h-100 border-0">
+            
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+            </div>
+            </div>
+        </div>
 
       <!-- Moving Window QR Attendance -->
       <div class="col-md-4">

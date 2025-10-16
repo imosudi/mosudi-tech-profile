@@ -56,6 +56,14 @@ def contact():
 def network_infra():
     return render_template("projects/project_enterprise_network.html", title="Enterprise Network Infrastructure")    
 
+@app.route("/icinga2-monitoring-system")
+def infra_monitoring():
+    return render_template("projects/icinga2.html", title="Icinga2 Monitoring System")
+
+@app.route("/kvm_virtualisation")
+def kvm_gluster_infra():
+    return render_template("projects/kvm_virtualisation.html", title="Icinga2 Monitoring System")
+
 @app.route("/message-sent")
 def message_sent():
     return render_template("message_sent.html")

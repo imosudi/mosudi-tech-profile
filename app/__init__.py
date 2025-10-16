@@ -24,9 +24,9 @@ security = Security(app, user_datastore)
 # Create database tables
 with app.app_context():
     db.create_all()
-    if not user_datastore.find_user(email="admin@mioemi.com"):
+    if not user_datastore.find_user(email="admin@example.com"):
         user_datastore.create_user(
-            email="admin@mioemi.com",
+            email="admin@example.com",
             password="password123",  # auto-hashed
         )
         db.session.commit()

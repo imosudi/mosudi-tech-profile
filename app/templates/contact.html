@@ -3,16 +3,21 @@
 {% block content %}
 <section class="py-5 bg-light">
   <div class="container">
+    <!-- Section Heading -->
     <div class="text-center mb-5">
       <h2 class="fw-bold">Get in Touch</h2>
-      <p class="text-muted">Have a project in mind, a research idea, or just want to connect? Send a message — I’ll get back to you promptly.</p>
+      <p class="text-muted">
+        Have a project in mind, a research idea, or just want to connect?
+        Send a message — I’ll get back to you promptly.
+      </p>
     </div>
 
+    <!-- Contact Form -->
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
         <div class="card shadow-sm border-0">
           <div class="card-body p-4">
-            <form method="POST" action="{{ url_for('contact') }}">
+            <form method="POST" action="{{ url_for('contact') }}" id="contactForm">
               {{ form.hidden_tag() }}
 
               <!-- Name -->
@@ -20,9 +25,7 @@
                 {{ form.name.label(class="form-label fw-semibold") }}
                 {{ form.name(class="form-control", placeholder="Your full name") }}
                 {% if form.name.errors %}
-                  <div class="text-danger small mt-1">
-                    {{ form.name.errors[0] }}
-                  </div>
+                  <div class="text-danger small mt-1">{{ form.name.errors[0] }}</div>
                 {% endif %}
               </div>
 
@@ -31,31 +34,23 @@
                 {{ form.email.label(class="form-label fw-semibold") }}
                 {{ form.email(class="form-control", placeholder="you@example.com") }}
                 {% if form.email.errors %}
-                  <div class="text-danger small mt-1">
-                    {{ form.email.errors[0] }}
-                  </div>
+                  <div class="text-danger small mt-1">{{ form.email.errors[0] }}</div>
                 {% endif %}
               </div>
 
-              <!-- Subject -->
+              <!-- Subject Section -->
               <div class="mb-3">
-                {#{ form.subject.label(class="form-label fw-semibold") }#}
-                <!-- Subject Category -->
-                <div class="mb-3">
-                  {{ form.subject_choice.label(class="form-label fw-semibold") }}
-                  {{ form.subject_choice(class="form-select") }}
-                </div>
-                <!-- Custom Subject -->
-                <div class="mb-3">
-                  {{ form.subject.label(class="form-label fw-semibold") }}
-                  {{ form.subject(class="form-control", placeholder="Custom subject (if 'Other')") }}
-                  {% if form.subject.errors %}
-                    <div class="text-danger small mt-1">
-                      {{ form.subject.errors[0] }}
-                    </div>
-                  {% endif %}
-                </div>
-                
+                {{ form.subject_choice.label(class="form-label fw-semibold") }}
+                {{ form.subject_choice(class="form-select", id="subject_choice") }}
+              </div>
+
+              <!-- Conditional Custom Subject -->
+              <div class="mb-3" id="custom-subject-wrapper" style="display:none;">
+                {{ form.subject.label(class="form-label fw-semibold") }}
+                {{ form.subject(class="form-control", placeholder="Enter a custom subject") }}
+                {% if form.subject.errors %}
+                  <div class="text-danger small mt-1">{{ form.subject.errors[0] }}</div>
+                {% endif %}
               </div>
 
               <!-- Message -->
@@ -63,13 +58,20 @@
                 {{ form.message.label(class="form-label fw-semibold") }}
                 {{ form.message(class="form-control", rows="5", placeholder="Write your message here...") }}
                 {% if form.message.errors %}
-                  <div class="text-danger small mt-1">
-                    {{ form.message.errors[0] }}
-                  </div>
+                  <div class="text-danger small mt-1">{{ form.message.errors[0] }}</div>
                 {% endif %}
               </div>
 
-              <!-- Submit -->
+              <!-- Google reCAPTCHA -->
+              <div class="mb-4 text-center">
+                <div class="g-recaptcha d-inline-block"
+                     data-sitekey="{{RECAPTCHA_SITE_KEY}}"></div>
+                {% if form.recaptcha.errors %}
+                  <div class="text-danger small mt-1">{{ form.recaptcha.errors[0] }}</div>
+                {% endif %}
+              </div>
+
+              <!-- Submit Button -->
               <div class="d-grid">
                 {{ form.submit(class="btn btn-primary btn-lg") }}
               </div>
@@ -79,6 +81,7 @@
       </div>
     </div>
 
+    <!-- Alternate Contact Option -->
     <div class="text-center mt-4">
       <small class="text-muted">
         Alternatively, reach me via email at 
@@ -87,19 +90,37 @@
     </div>
   </div>
 </section>
+
+<!-- reCAPTCHA API Script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Custom Logic -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const category = document.querySelector("#subject_choice");
-  const customSubject = document.querySelector("#subject");
+  const customWrapper = document.querySelector("#custom-subject-wrapper");
 
-  if (category && customSubject) {
+  // Toggle custom subject field
+  if (category && customWrapper) {
     const toggleCustom = () => {
-      customSubject.closest('.mb-3').style.display = 
-        category.value === "other" ? "block" : "none";
+      customWrapper.style.display = category.value === "other" ? "block" : "none";
     };
     toggleCustom();
     category.addEventListener("change", toggleCustom);
   }
+
+  // Optional: Toastify success popup
+  {% if success_message %}
+  Toastify({
+    text: "{{ success_message }}",
+    duration: 4000,
+    close: true,
+    gravity: "top",
+    position: "right",
+    backgroundColor: "#198754",
+    stopOnFocus: true
+  }).showToast();
+  {% endif %}
 });
 </script>
 {% endblock %}

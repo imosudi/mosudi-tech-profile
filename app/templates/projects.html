@@ -1,3 +1,5 @@
+
+
 {% extends "base.html" %}
 {% block title %}Projects - {{ super() }}{% endblock %}
 {% block content %}
@@ -12,6 +14,16 @@
 
     <div class="row g-4">
       {% for project in [
+        {
+          "title": "Enterprise Network Infrastructure",
+          "desc": "A comprehensive configuration and documentation of a multi-VLAN enterprise network architecture integrating routing, NAT, and security controls for a mid-sized organisation.",
+          "features": [
+            "Enterprise-class VLAN and IP schema with NAT/PAT routing",
+            "Mermaid-based topology visualisation and structured Markdown documentation",
+            "SSH, SNMP, and NTP configuration for secure management and monitoring"
+          ],
+          "icons": ["diagram-3", "shield-lock", "hdd-network"]
+        },
         {
           "title": "IoT-Based Adaptive Sensor Network",
           "desc": "A smart agricultural monitoring framework designed for West African farm settlements. The system uses adaptive sensing algorithms to optimise sensor sleep cycles based on environmental conditions — balancing power efficiency and data reliability.",

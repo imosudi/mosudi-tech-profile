@@ -1,6 +1,8 @@
 import os
 from flask import render_template, redirect, url_for, flash
 from flask_mail import Message
+
+from app.config import RECAPTCHA_SITE_KEY
 from . import app, mail
 from .extensions import db
 from .forms import ContactForm
@@ -46,7 +48,7 @@ def contact():
             print(f"Error sending email: {e}")
             flash("Sorry, there was an error sending your message. Please try again.", "error")
 
-    return render_template("contact.html", form=form)
+    return render_template("contact.html", form=form, RECAPTCHA_SITE_KEY=RECAPTCHA_SITE_KEY)
 
 
 @app.route("/message-sent")

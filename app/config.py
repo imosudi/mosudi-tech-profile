@@ -13,14 +13,19 @@ load_dotenv(dotenv_path)
 class Config:
     # Core Flask configuration
     SECRET_KEY = os.getenv("MIO_SECRET_KEY", "default-secret-key")
+
+    RECAPTCHA_SITE_KEY      = os.getenv("MIO_RECAPTCHA_SITE_KEY", '6LeFlWkrAAAA')
+    RECAPTCHA_SECRET_KEY    = os.getenv("MIO_RECAPTCHA_SECRET_KEY", '6LeFlWkrAAAA')
+    RECAPTCHA_PUBLIC_KEY    = os.getenv("MIO_RECAPTCHA_SITE_KEY", '6LeFlWkrAAAA')
+    RECAPTCHA_PRIVATE_KEY   = os.getenv("MIO_RECAPTCHA_SECRET_KEY", '6LeFlWkrAAAA')
     
     # Database configuration
-    SQLALCHEMY_DATABASE_URI = os.getenv("MIO_DATABASE_URL", "sqlite:///mosudi_tech_profile.db")
+    SQLALCHEMY_DATABASE_URI     = os.getenv("MIO_DATABASE_URL", "sqlite:///mosudi_tech_profile.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Flask-Security-Too configuration
-    SECURITY_PASSWORD_SALT = os.getenv("MIO_SECURITY_PASSWORD_SALT", "default-salt")
-    SECURITY_REGISTERABLE = os.getenv("MIO_SECURITY_REGISTERABLE", "True") == "True"
+    SECURITY_PASSWORD_SALT  = os.getenv("MIO_SECURITY_PASSWORD_SALT", "default-salt")
+    SECURITY_REGISTERABLE   = os.getenv("MIO_SECURITY_REGISTERABLE", "True") == "True"
     SECURITY_SEND_REGISTER_EMAIL = os.getenv("SECURITY_SEND_REGISTER_EMAIL", "False") == "True"
 
     # Optional: Email configuration
@@ -40,3 +45,6 @@ class Config:
     MAIL_PASSWORD = os.getenv('MIO_MAIL_PASSWORD')  # Load from env
     MAIL_DEFAULT_SENDER = os.getenv('MIO_MAIL_DEFAULT_SENDER', 'info@mioemi.com')
 
+
+
+RECAPTCHA_SITE_KEY      = os.getenv("MIO_RECAPTCHA_SITE_KEY", '6LeFlWkrAAAA')

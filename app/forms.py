@@ -2,14 +2,7 @@ from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, TextAreaField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Email, Length, Optional
 
-
-class Contact_Form_(FlaskForm):
-    name = StringField("Full Name", validators=[DataRequired(), Length(min=2, max=100)])
-    email = StringField("Email", validators=[DataRequired(), Email()])
-    subject = StringField("Subject", validators=[DataRequired(), Length(min=3, max=150)])
-    message = TextAreaField("Message", validators=[DataRequired(), Length(min=10)])
-    submit = SubmitField("Send Message")
-
+# Contact form with optional subject dropdown and reCAPTCHA
 class ContactForm__(FlaskForm):
     name = StringField("Name", validators=[DataRequired(), Length(min=2, max=50)])
     email = StringField("Email", validators=[DataRequired(), Email(), Length(max=120)])
@@ -33,7 +26,7 @@ class ContactForm__(FlaskForm):
     submit = SubmitField("Send Message")
 
 
-
+# Contact form with optional subject dropdown and reCAPTCHA
 class ContactForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired(), Length(min=2, max=50)])
     email = StringField("Email", validators=[DataRequired(), Email(), Length(max=120)])

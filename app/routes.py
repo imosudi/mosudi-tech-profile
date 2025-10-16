@@ -52,6 +52,10 @@ def contact():
     return render_template("contact.html", form=form, RECAPTCHA_SITE_KEY=RECAPTCHA_SITE_KEY)
 
 
+@app.route("/network-infrastructure")
+def network_infra():
+    return render_template("projects/project_enterprise_network.html", title="Enterprise Network Infrastructure")    
+
 @app.route("/message-sent")
 def message_sent():
     return render_template("message_sent.html")

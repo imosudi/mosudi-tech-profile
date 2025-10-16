@@ -1,0 +1,319 @@
+{% extends "base.html" %}
+{% block title %}Enterprise Network Infrastructure - {{ super() }}{% endblock %}
+{% block content %}
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-primary mb-3">Enterprise Network Infrastructure</h1>
+      <p class="text-muted lead">
+        A comprehensive multi-VLAN enterprise network architecture for The Enterprise Co., featuring 8 network segments with integrated routing, NAT/PAT, and advanced security controls.
+      </p>
+    </div>
+
+    <!-- Project Hero Image -->
+    <div class="text-center mb-5">
+      <img src="{{ url_for('static', filename='images/enterprise_network_project.png') }}" 
+           alt="Enterprise Network Infrastructure topology visualisation" 
+           class="img-fluid rounded shadow-sm" 
+           style="max-height: 420px; object-fit: cover;">
+    </div>
+
+    <!-- Project Overview -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Project Overview</h3>
+            <p>
+              This project delivers a scalable and secure <strong>enterprise network design</strong> built on 
+              multi-VLAN segmentation principles. The Enterprise Edge Router serves as the core routing device, 
+              providing connectivity for multiple network segments including wireless, CCTV, server, VoIP, and 
+              broadcast networks through 8 dedicated VLANs.
+            </p>
+            <p>
+              The configuration implements NAT overload (PAT) for internet access through a UTM Firewall Gateway, 
+              ensuring efficient network segmentation, improved fault isolation, and reliable inter-VLAN communication. 
+              The infrastructure supports specialized networks for different operational requirements while maintaining 
+              centralized security and management controls.
+            </p>
+            <p class="mb-0">
+              <strong>Organization:</strong> The Enterprise Co. | 
+              <strong>Domain:</strong> theenterpriseco.com | 
+              <strong>Last Updated:</strong> March 19, 2025
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Network Architecture Details -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Network Architecture</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">WAN Connection</h6>
+                <ul class="small mb-3">
+                  <li><strong>External Interface:</strong> Gi0/0/1</li>
+                  <li><strong>IP Address:</strong> 10.10.1.254/24</li>
+                  <li><strong>Gateway:</strong> 10.10.1.1</li>
+                  <li><strong>NAT Type:</strong> Overload (PAT)</li>
+                </ul>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">Management Network</h6>
+                <ul class="small mb-3">
+                  <li><strong>Interface:</strong> GigabitEthernet0</li>
+                  <li><strong>IP Address:</strong> 10.10.5.112/24</li>
+                  <li><strong>VRF:</strong> Mgmt-intf</li>
+                  <li><strong>Access:</strong> SSH v2 Only</li>
+                </ul>
+              </div>
+            </div>
+            <h6 class="fw-semibold mt-3">VLAN Network Segments</h6>
+            <div class="table-responsive">
+              <table class="table table-sm table-hover">
+                <thead class="table-light">
+                  <tr>
+                    <th>VLAN</th>
+                    <th>Purpose</th>
+                    <th>Network</th>
+                    <th>Interface</th>
+                    <th>Gateway</th>
+                  </tr>
+                </thead>
+                <tbody class="small">
+                  <tr>
+                    <td><span class="badge bg-primary">10</span></td>
+                    <td>Broadcast Media Network</td>
+                    <td>10.10.15.0/24</td>
+                    <td>Gi0/0/0.10</td>
+                    <td>10.10.15.1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">20</span></td>
+                    <td>Enterprise Management</td>
+                    <td>10.10.25.0/24</td>
+                    <td>Gi0/0/2.20</td>
+                    <td>10.10.25.1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">30</span></td>
+                    <td>WiFi Network</td>
+                    <td>10.10.35.0/24</td>
+                    <td>Gi0/2/0</td>
+                    <td>10.10.35.1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">40</span></td>
+                    <td>CCTV Network</td>
+                    <td>10.10.45.0/24</td>
+                    <td>Gi0/2/1</td>
+                    <td>10.10.45.1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">50</span></td>
+                    <td>Server Network</td>
+                    <td>10.10.55.0/24</td>
+                    <td>Gi0/2/2</td>
+                    <td>10.10.55.1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">60</span></td>
+                    <td>IP Phone Network</td>
+                    <td>10.10.65.0/24</td>
+                    <td>Gi0/2/3</td>
+                    <td>10.10.65.1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">70</span></td>
+                    <td>Broadcast Network</td>
+                    <td>10.10.75.0/24</td>
+                    <td>Gi0/2/4</td>
+                    <td>10.10.75.1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge bg-primary">80</span></td>
+                    <td>Access Network</td>
+                    <td>10.10.85.0/24</td>
+                    <td>Gi0/2/5</td>
+                    <td>10.10.85.1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Features -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h3 class="fw-semibold text-primary text-center mb-4">Key Features</h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <div class="mb-3 text-primary">
+                <i class="bi bi-diagram-3" style="font-size:2rem;"></i>
+              </div>
+              <h6 class="fw-semibold">Multi-VLAN Routing & NAT</h6>
+              <p class="small text-muted">
+                8 segregated VLANs with inter-VLAN routing and NAT/PAT translation on the external interface. 
+                Structured IP allocation follows 10.10.X5.0/24 pattern for consistent network design.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <div class="mb-3 text-primary">
+                <i class="bi bi-shield-lock" style="font-size:2rem;"></i>
+              </div>
+              <h6 class="fw-semibold">Security & Access Control</h6>
+              <p class="small text-muted">
+                SSH v2 authentication with privilege level 15 access, VTY line restrictions, NAT access lists, 
+                and SNMP monitoring with read-only community string for enhanced security.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <div class="mb-3 text-primary">
+                <i class="bi bi-hdd-network" style="font-size:2rem;"></i>
+              </div>
+              <h6 class="fw-semibold">Network Services</h6>
+              <p class="small text-muted">
+                DNS resolution (8.8.8.8, 4.2.2.2), NTP time synchronization with authenticated servers 
+                (pool.ntp.org), and comprehensive network documentation with MermaidJS diagrams.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mermaid Diagram -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h3 class="fw-semibold text-primary mb-3">Network Topology Visualisation</h3>
+            <div class="mermaid text-center">
+              graph TB
+                Internet((Internet))
+                FW[UTM Firewall Gateway]
+                Router[Enterprise Net Router]
+                
+                subgraph Internal Networks
+                  VLAN10[VLAN 10<br/>10.10.15.0/24<br/>Broadcast Media Network]
+                  VLAN20[VLAN 20<br/>10.10.25.0/24<br/>Enterprise Mgt Network]
+                  VLAN30[VLAN 30<br/>10.10.35.0/24<br/>WiFi Network]
+                  VLAN40[VLAN 40<br/>10.10.45.0/24<br/>CCTV Network]
+                  VLAN50[VLAN 50<br/>10.10.55.0/24<br/>Server Network]
+                  VLAN60[VLAN 60<br/>10.10.65.0/24<br/>IP Phone Network]
+                  VLAN70[VLAN 70<br/>10.10.75.0/24<br/>Broadcast Network]
+                  VLAN80[VLAN 80<br/>10.10.85.0/24<br/>Access Network]
+                end
+                
+                Internet --> FW
+                FW --> Router
+                Router --> VLAN10
+                Router --> VLAN20
+                Router --> VLAN30
+                Router --> VLAN40
+                Router --> VLAN50
+                Router --> VLAN60
+                Router --> VLAN70
+                Router --> VLAN80
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security Configuration -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="fw-semibold mb-3 text-primary">Security Configuration</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">Access Control</h6>
+                <ul class="small">
+                  <li>SSH Version 2 enabled for secure remote access</li>
+                  <li>Local authentication with privilege level 15</li>
+                  <li>VTY lines (0-4, 5-15) configured for SSH only</li>
+                  <li>Username "mosud" with administrative privileges</li>
+                </ul>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">NAT Configuration</h6>
+                <ul class="small">
+                  <li>NAT overload (PAT) on Gi0/0/1</li>
+                  <li>All internal networks in NAT_INTERNAL ACL</li>
+                  <li>Inside interfaces: All VLAN interfaces</li>
+                  <li>Outside interface: Gi0/0/1 (WAN)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">DNS Services</h6>
+                <ul class="small">
+                  <li><strong>Primary DNS:</strong> 8.8.8.8 (Google)</li>
+                  <li><strong>Secondary DNS:</strong> 4.2.2.2 (Level3)</li>
+                  <li><strong>Domain:</strong> theenterpriseco.com</li>
+                </ul>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6 class="fw-semibold">Monitoring & Time Sync</h6>
+                <ul class="small">
+                  <li><strong>SNMP Community:</strong> enterprise_net (RO)</li>
+                  <li><strong>NTP Servers:</strong> 1.pool.ntp.org, 0.pool.ntp.org</li>
+                  <li><strong>NTP Authentication:</strong> Enabled (Key 1)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technologies -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <h3 class="fw-semibold text-primary text-center mb-4">Technologies Used</h3>
+        <ul class="list-inline text-center">
+          <li class="list-inline-item mx-3"><span class="badge bg-dark fs-6">Cisco IOS</span></li>
+          <li class="list-inline-item mx-3"><span class="badge bg-primary fs-6">VLANs & NAT/PAT</span></li>
+          <li class="list-inline-item mx-3"><span class="badge bg-success fs-6">SSH v2</span></li>
+          <li class="list-inline-item mx-3"><span class="badge bg-secondary fs-6">MermaidJS</span></li>
+          <li class="list-inline-item mx-3"><span class="badge bg-info text-dark fs-6">SNMP & NTP</span></li>
+          <li class="list-inline-item mx-3"><span class="badge bg-warning text-dark fs-6">DNS Services</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center">
+      <a href="{{ url_for('projects') }}" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Back to Projects
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Mermaid.js Script -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+</script>
+
+{% endblock %}

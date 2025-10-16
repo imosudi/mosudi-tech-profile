@@ -278,7 +278,7 @@ sudo systemctl restart libvirtd
 
 # Recommended secure method: SSH tunnel from desktop:
 # From desktop: establish SSH tunnel and connect virt-manager to qemu+ssh://user@host/system
-ssh -fNL 16509:localhost:16509 user@host.example.com -p 22
+ssh -fNL 16509:localhost:16509 user@host.mioemi.com -p 22
 # Then in virt-manager, open connection: qemu+tcp://localhost/system (or use qemu+ssh)
 </code></pre>
 
@@ -289,15 +289,15 @@ sudo apt install -y glusterfs-server
 sudo systemctl enable --now glusterd
 
 # On Lagos host:
-sudo gluster peer probe uk-host.example.com
+sudo gluster peer probe uk-host.mioemi.com
 
 # Create replicated volume (example)
 sudo mkdir -p /srv/gluster/gv0/brick
 sudo mkdir -p /srv/gluster/gv0/brick
 
 sudo gluster volume create gv0 replica 2 transport tcp \
-  lagos.example.com:/srv/gluster/gv0/brick \
-  uk.example.com:/srv/gluster/gv0/brick
+  lagos.mioemi.com:/srv/gluster/gv0/brick \
+  uk.mioemi.com:/srv/gluster/gv0/brick
 
 sudo gluster volume start gv0
 sudo gluster volume status gv0
@@ -306,10 +306,10 @@ sudo gluster volume status gv0
             <h6 class="fw-semibold mt-3">Mount Gluster volume on host for libvirt storage</h6>
             <pre class="small bg-light p-3 rounded"><code># Create mount point and mount (on each host)
 sudo mkdir -p /var/lib/libvirt/images
-sudo mount -t glusterfs lagos.example.com:/gv0 /var/lib/libvirt/images
+sudo mount -t glusterfs lagos.mioemi.com:/gv0 /var/lib/libvirt/images
 
 # Persist in /etc/fstab (example):
-lagos.example.com:/gv0  /var/lib/libvirt/images  glusterfs  defaults,_netdev  0  0
+lagos.mioemi.com:/gv0  /var/lib/libvirt/images  glusterfs  defaults,_netdev  0  0
 </code></pre>
 
             <h6 class="fw-semibold mt-3">Create a VM using virt-install (CLI) and using virt-manager (GUI)</h6>

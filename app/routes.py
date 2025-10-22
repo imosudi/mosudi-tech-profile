@@ -64,6 +64,10 @@ def infra_monitoring():
 def kvm_gluster_infra():
     return render_template("projects/kvm_virtualisation.html", title="Icinga2 Monitoring System")
 
+@app.route("/point-to-point")
+def point_to_point():
+    return render_template("projects/point-to-point.html", title="Point to Point Wireless Link")
+
 @app.route("/message-sent")
 def message_sent():
     return render_template("message_sent.html")

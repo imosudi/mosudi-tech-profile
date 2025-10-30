@@ -13,7 +13,6 @@
 | Desktop View | Mobile View |
 |---------------|--------------|
 |![alt text](preview-desktop.png) Desktop Preview|![alt text](preview-mobile.png) Mobile Preview|
-| ![Desktop Preview](https://www.miocode.site/static/images/preview-desktop.png) | ![Mobile Preview](https://www.miocode.site/static/images/preview-mobile.png) |
 
 ---
 

@@ -12,7 +12,7 @@
 
 | Desktop View | Mobile View |
 |---------------|--------------|
-|![alt Desktop Preview](images/preview-desktop.png) |![alt  Mobile Preview](images/preview-mobile.png)|
+|![alt Desktop Preview](./images/preview-desktop.png) |![alt  Mobile Preview](./images/preview-mobile.png)|
 
 ---
 

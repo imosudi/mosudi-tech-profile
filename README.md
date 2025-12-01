@@ -12,7 +12,7 @@
 
 | Desktop View | Mobile View |
 |---------------|--------------|
-|![alt Desktop Preview](preview-desktop.png) |![alt  Mobile Preview](preview-mobile.png)|
+|![alt Desktop Preview](images/preview-desktop.png) |![alt  Mobile Preview](images/preview-mobile.png)|
 
 ---
 
@@ -80,6 +80,9 @@ mosudi-tech-profile/
 │   ├── routes.py
 │   ├── static/
 │   └── templates/
+├── images/
+│   ├── preview-desktop.png
+│   └── preview-mobile.png
 ├── instance/
 │   └── mosudi_tech_profile.db
 ├── main.py

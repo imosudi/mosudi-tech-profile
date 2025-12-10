@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery | Mosudi Isiaka – Visual Highlights{% endblock %}
+
+{% block content %}
+
+<!-- ===== PAGE HEADER ===== -->
+<section class="py-5 bg-light border-bottom" data-aos="fade-down">
+  <div class="container text-center">
+    <h2 class="fw-bold">Gallery</h2>
+    <p class="text-muted mb-0">
+      A curated collection of visual moments and technical activities.
+    </p>
+  </div>
+</section>
+
+
+<!-- ********************************************************************** -->
+<!-- ========================== SECTION 1 ================================= -->
+<!-- ===================== API PROJECT STAKEHOLDERS ======================== -->
+<!-- ********************************************************************** -->
+
+<section class="py-5">
+  <div class="container">
+
+    <h3 class="fw-bold mb-4 text-center" data-aos="fade-right">API Project Stakeholders Explainer</h3>
+
+    <div class="row g-4">
+
+      {% set api_images = [
+        ("IMG_20220301_153402_6.jpg", 2080, 4160),
+        ("IMG_20220301_153421_5.jpg", 4160, 2080),
+        ("IMG_20220301_153444_1.jpg", 4160, 2080),
+        ("IMG_20220301_153559_8.jpg", 4160, 2080),
+        ("IMG_20220302_114137_6.jpg", 2448, 3264),
+        ("IMG_20220302_114145_4.jpg", 2448, 3264),
+        ("IMG_20220302_125805_1.jpg", 4160, 2080),
+        ("IMG_20220302_125831_6.jpg", 2080, 4160),
+        ("IMG_20220302_125900_7.jpg", 2080, 4160),
+        ("IMG_20220302_130131_8.jpg", 2080, 4160),
+        ("IMG_20220302_130159_9.jpg", 2080, 4160),
+        ("IMG_20220302_130228_7.jpg", 4160, 2080),
+        ("IMG_20220302_130246_9.jpg", 2080, 4160),
+        ("IMG_20220303_095640_1.jpg", 2080, 4160),
+        ("IMG_20220303_095728_5.jpg", 2080, 4160)
+      ] %}
+
+      {% for img, w, h in api_images %}
+        {% set orientation = "portrait" if h > w else "landscape" %}
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3"
+             data-aos="zoom-in"
+             data-aos-delay="{{ loop.index * 60 }}">
+
+          <div class="gallery-item position-relative overflow-hidden rounded-4 shadow-sm"
+               data-bs-toggle="modal"
+               data-bs-target="#imageModal"
+               data-img="{{ url_for('static', filename='images/gallery/api_project/' ~ img) }}"
+               data-tilt data-tilt-max="6">
+
+            <img src="{{ url_for('static', filename='images/gallery/api_project/' ~ img) }}"
+                 alt="API Project Image {{ loop.index }}"
+                 class="img-fluid w-100 gallery-image {{ orientation }}">
+
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ********************************************************************** -->
+<!-- ========================== SECTION 2 ================================= -->
+<!-- ==================== TECHNICAL TRAINING WORKSHOPS ==================== -->
+<!-- ********************************************************************** -->
+
+<section class="py-5 bg-light">
+  <div class="container">
+
+    <h3 class="fw-bold mb-4 text-center" data-aos="fade-right">Technical Training Workshops</h3>
+
+    <div class="row g-4">
+
+      {% set training_images = [
+        ("IMG_20170728_123227.jpg", 1600, 1200),
+        ("img_20170801_171500_1024.jpg", 1024, 768),
+        ("img_20170801_171506_1024.jpg", 1024, 768),
+        ("img_20170801_171514_1024.jpg", 1024, 768),
+        ("img_20170801_171523.jpg", 4032, 3024),
+        ("img_20170801_171529_1024.jpg", 768, 1024),
+        ("img_20170801_171529.jpg", 3024, 4032),
+        ("IMG_20170801_180555.jpg", 4032, 3024),
+        ("IMG_20170801_180650.jpg", 4032, 3024),
+        ("IMG_20170801_180654.jpg", 4032, 3024)
+      ] %}
+
+      {% for img, w, h in training_images %}
+        {% set orientation = "portrait" if h > w else "landscape" %}
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3"
+             data-aos="zoom-in"
+             data-aos-delay="{{ loop.index * 60 }}">
+
+          <div class="gallery-item position-relative overflow-hidden rounded-4 shadow-sm"
+               data-bs-toggle="modal"
+               data-bs-target="#imageModal"
+               data-img="{{ url_for('static', filename='images/gallery/training_session/' ~ img) }}"
+               data-tilt data-tilt-max="6">
+
+            <img src="{{ url_for('static', filename='images/gallery/training_session/' ~ img) }}"
+                 alt="Training Workshop Image {{ loop.index }}"
+                 class="img-fluid w-100 gallery-image {{ orientation }}">
+
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== NETWORK IMPLEMENTATION ===== -->
+<section class="py-5">
+  <div class="container">
+
+    <h3 class="fw-bold mb-4 text-center" data-aos="fade-up">
+      Network Implementation
+    </h3>
+
+    <div class="row g-4">
+
+      {% for img, w, h in network_images %}
+        {% set orientation = "portrait" if h > w else "landscape" %}
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3"
+             data-aos="zoom-in"
+             data-aos-delay="{{ loop.index * 50 }}">
+
+          <div class="gallery-item position-relative overflow-hidden rounded-4 shadow-sm"
+               data-bs-toggle="modal"
+               data-bs-target="#imageModal"
+               data-img="{{ url_for('static', filename='images/gallery/network_project/' ~ img) }}"
+               data-tilt data-tilt-max="6">
+
+            <img src="{{ url_for('static', filename='images/gallery/network_project/' ~ img) }}"
+                 alt="Network Project Image {{ loop.index }}"
+                 class="img-fluid w-100 gallery-image {{ orientation }}">
+          </div>
+
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- ====================== IMAGE PREVIEW MODAL ======================= -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark border-0">
+      <div class="modal-body p-0 text-center">
+        <img id="modalImage" src="" class="img-fluid rounded-3">
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- =========================== SCRIPTS ============================ -->
+<script>
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const modalImage   = document.getElementById('modalImage');
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      modalImage.src = item.getAttribute('data-img');
+    });
+  });
+</script>
+
+
+<!-- ============================ STYLES ============================ -->
+<style>
+  .gallery-item {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  }
+
+  .gallery-image.landscape {
+    height: 190px;
+    object-fit: cover;
+  }
+
+  .gallery-image.portrait {
+    height: 300px;
+    object-fit: cover;
+  }
+</style>
+
+{% endblock %}

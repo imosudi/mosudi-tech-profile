@@ -161,6 +161,52 @@
 </section>
 
 
+<!-- ********************************************************************** -->
+<!-- ========================== SECTION 4 ================================= -->
+<!-- ========================= IEEE SMC 2025 ============================== -->
+<!-- ********************************************************************** -->
+
+<section class="py-5 bg-light">
+  <div class="container">
+
+    <h3 class="fw-bold mb-4 text-center" data-aos="fade-right">IEEE SMC 2025</h3>
+
+    <div class="row g-4">
+
+      {% set ieee_smc_images = [
+        ("2025-10-05_17_13_38.png", 1280, 960),
+        ("IMG_20251005_134216_102.jpg", 3968, 2976),
+        ("IMG_20251006_183527_858.jpg", 2976, 3968),
+        ("IMG_20251006_185223_450.jpg", 3968, 2976),
+        ("IMG_20251006_185500_844.jpg", 3968, 2976)
+      ] %}
+
+      {% for img, w, h in ieee_smc_images %}
+        {% set orientation = "portrait" if h > w else "landscape" %}
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3"
+             data-aos="zoom-in"
+             data-aos-delay="{{ loop.index * 60 }}">
+
+          <div class="gallery-item position-relative overflow-hidden rounded-4 shadow-sm"
+               data-bs-toggle="modal"
+               data-bs-target="#imageModal"
+               data-img="{{ url_for('static', filename='images/gallery/ieee_smc2025/' ~ img) }}"
+               data-tilt data-tilt-max="6">
+
+            <img src="{{ url_for('static', filename='images/gallery/ieee_smc2025/' ~ img) }}"
+                 alt="IEEE SMC 2025 Image {{ loop.index }}"
+                 class="img-fluid w-100 gallery-image {{ orientation }}">
+
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
 
 
 <!-- ====================== IMAGE PREVIEW MODAL ======================= -->

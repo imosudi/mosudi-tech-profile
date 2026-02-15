@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_mail import Mail
+from flask_moment import Moment
 from .extensions import db
 from .models import User, Role
 from .config import Config
@@ -16,7 +17,7 @@ app.jinja_env.filters['zip'] = zip
 # Initialise extensions
 db.init_app(app)
 mail = Mail(app)
-
+moment = Moment(app)
 # Flask-Security setup
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)

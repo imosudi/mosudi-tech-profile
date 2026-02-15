@@ -59,12 +59,20 @@
           </a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link fw-bolder {% if request.endpoint == 'services' %}active{% endif %}" 
-             href="{{ url_for('services') }}" aria-label="IT Stability Services">
-            IT Stability Services
+        <li class="nav-item ms-lg-2">
+          <a class="btn btn-warning fw-bold px-4 py-2 shadow-sm position-relative
+             {% if request.endpoint == 'services' %}active border border-light{% endif %}"
+             href="{{ url_for('services') }}"
+             aria-label="IT Stability Services"
+             style="letter-spacing: 0.5px; transition: all 0.3s ease;">
+        
+            <span class="d-inline-flex align-items-center">
+              <i class="bi bi-shield-check me-2"></i>
+              IT Stability Services
+            </span>
           </a>
         </li>
+        
 
       </ul>
     </div>

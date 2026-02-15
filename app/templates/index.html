@@ -177,6 +177,18 @@
     </div>
   </div>
 </section>
-
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    Toastify({
+      text: "Welcome to my professional profile",
+      duration: 3500,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#0d6efd",
+      stopOnFocus: true
+    }).showToast();
+  });
+</script>
 
 {% endblock %}

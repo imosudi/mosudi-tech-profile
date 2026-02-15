@@ -260,4 +260,18 @@
   }
 </style>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Trigger Toastify popup when this page loads (optional demo)
+    Toastify({
+      text: "Gallery loaded successfully!",
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#0d6efd",
+      stopOnFocus: true
+    }).showToast();
+  });
+</script>
 {% endblock %}

@@ -26,7 +26,7 @@ def projects():
     return render_template('projects.html', title='Projects', projects=projects)
 
 
-@app.route("/contact", methods=["GET", "POST"])
+@app.route("/contact",  methods=["GET", "POST"])
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
@@ -49,7 +49,11 @@ def contact():
             print(f"Error sending email: {e}")
             flash("Sorry, there was an error sending your message. Please try again.", "error")
 
-    return render_template("contact.html", form=form, RECAPTCHA_SITE_KEY=RECAPTCHA_SITE_KEY)
+    return render_template("contact.html",title='Contact', form=form, RECAPTCHA_SITE_KEY=RECAPTCHA_SITE_KEY)
+
+@app.route('/services')
+def services():
+    return render_template('services.html', title='My Services')
 
 
 @app.route("/network-infrastructure")

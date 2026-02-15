@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% block title %}IT Stability Services | Mosudi Tech Profile{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="py-5 bg-dark text-white rounded-4 shadow">
+  <div class="text-center px-4">
+    <h1 class="fw-bold mb-3">Reliable IT — Without Surprises</h1>
+    <p class="lead text-light mb-4">
+      Structured systems. Stable networks. Verified backups.
+    </p>
+    <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg px-4">
+      Request Assistance
+    </a>
+  </div>
+</section>
+
+
+<!-- FAST FIX -->
+<section class="py-5">
+  <h2 class="text-center fw-semibold mb-2">Immediate Problem Fixes</h2>
+  <p class="text-center text-muted mb-5">Fast resolution of critical issues.</p>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card service-card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="bi bi-wifi display-6 text-primary mb-3"></i>
+          <h5>Wi-Fi Stabilisation</h5>
+          <p class="small text-muted">
+            Permanent resolution of unstable or slow wireless connectivity.
+          </p>
+          <div class="price-tag">€120 – €220</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card service-card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="bi bi-router display-6 text-primary mb-3"></i>
+          <h5>Internet Dropout Repair</h5>
+          <p class="small text-muted">
+            Diagnosis and correction of router, NAT, and DHCP conflicts.
+          </p>
+          <div class="price-tag">€140 fixed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card service-card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="bi bi-hdd-network display-6 text-primary mb-3"></i>
+          <h5>Shared Folder / NAS Access</h5>
+          <p class="small text-muted">
+            Restore secure file access and permission structure.
+          </p>
+          <div class="price-tag">€120</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- STABILITY PACKAGES -->
+<section class="py-5 bg-light rounded-4">
+  <h2 class="text-center fw-semibold mb-2">Office Stability Packages</h2>
+  <p class="text-center text-muted mb-5">
+    Structured preventive configuration for long-term reliability.
+  </p>
+
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <div class="card service-card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="bi bi-diagram-3 display-6 text-success mb-3"></i>
+          <h5>Office Never Stops</h5>
+          <p class="small text-muted">
+            Structured network design preventing outages and device conflicts.
+          </p>
+          <div class="price-tag">€380 – €650</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card service-card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="bi bi-envelope-check display-6 text-success mb-3"></i>
+          <h5>Email Reliability Setup</h5>
+          <p class="small text-muted">
+            SPF, DKIM and delivery corrections for dependable communication.
+          </p>
+          <div class="price-tag">€280 – €520</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card service-card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="bi bi-shield-lock display-6 text-success mb-3"></i>
+          <h5>Automatic Backup Protection</h5>
+          <p class="small text-muted">
+            Encrypted daily backups with restore verification.
+          </p>
+          <div class="price-tag">€420 setup</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card service-card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="bi bi-laptop display-6 text-success mb-3"></i>
+          <h5>Secure Remote Office</h5>
+          <p class="small text-muted">
+            Controlled VPN access without exposing internal infrastructure.
+          </p>
+          <div class="price-tag">€320 – €600</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CARE PLANS -->
+<section class="py-5">
+  <h2 class="text-center fw-semibold mb-2">Ongoing Care Plans</h2>
+  <p class="text-center text-muted mb-5">
+    Continuous monitoring and preventative oversight.
+  </p>
+
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <div class="card service-card h-100 border-0 shadow-sm">
+        <div class="card-body">
+          <i class="bi bi-activity display-6 text-warning mb-3"></i>
+          <h5>Monitoring Care</h5>
+          <p class="small text-muted">
+            Uptime monitoring, disk alerts, and backup verification.
+          </p>
+          <div class="price-tag">€39 – €79 / month</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card service-card h-100 border-0 shadow-sm position-relative">
+        <span class="badge bg-primary position-absolute top-0 end-0 m-3">
+          Most Selected
+        </span>
+        <div class="card-body">
+          <i class="bi bi-shield-check display-6 text-warning mb-3"></i>
+          <h5>Full Stability Care</h5>
+          <p class="small text-muted">
+            Priority support and structured preventative maintenance.
+          </p>
+          <div class="price-tag">€120 – €240 / month</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ADVANCED LINUX -->
+<section class="py-5 bg-light rounded-4">
+  <h2 class="text-center fw-semibold mb-4">
+    Advanced Linux & Infrastructure Audit
+  </h2>
+
+  <div class="card service-card border-0 shadow-sm mx-auto" style="max-width: 650px;">
+    <div class="card-body text-center">
+      <i class="bi bi-terminal display-5 text-dark mb-3"></i>
+      <h5>Linux Server Health Audit</h5>
+      <p class="small text-muted">
+        Security hardening, container reliability, performance analysis, and backup integrity validation.
+      </p>
+      <div class="price-tag">€300 – €900</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="text-center py-5">
+  <h3 class="mb-3">Unsure what is failing?</h3>
+  <p class="text-muted mb-4">
+    Describe the issue — I will identify the cause and propose a fixed solution.
+  </p>
+  <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg px-4">
+    Request Assistance
+  </a>
+</section>
+
+{% endblock %}

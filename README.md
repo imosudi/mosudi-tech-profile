@@ -187,7 +187,7 @@ Redistribution and use in source and binary forms, with or without modification,
 ## 👤 Author
 
 **Isiaka Olukayode Mosudi**  
-M.Eng (Communications Engineering) | MSc (IoT & Smart Systems)  
+MEng (Communications Engineering) | MSc (IoT & Smart Systems) | BEng (Electrical and Computer Engineering)
 Vienna, Austria  
 
 📧 `imosudi@outlook.com`  

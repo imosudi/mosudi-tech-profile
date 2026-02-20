@@ -1,3 +1,4 @@
+<!--templates/index.html-->
 {% extends "base.html" %}
 
 {% block title %}Home | Mosudi Tech Profile{% endblock %}
@@ -54,6 +55,22 @@
     </div>
 </section>
 
+<section class="py-5">
+  <div class="container card">
+    <h2 class="text-center mb-4 fw-semibold">Expert in Scalable IT Infrastructure & Systems</h2>
+    <img src="{{ url_for('static', filename='images/infographic.png') }}" 
+         class="img-fluid rounded-3 shadow-sm" 
+         alt="Infographic showcasing expertise in scalable IT infrastructure and systems">
+      <div class="card-body">
+        <br>
+        <p class="lead mb-4">
+          Certified IT Infrastructure Specialist with over a decade of experience in managing high-availability enterprise environments.
+          Bridges the traditional data centre operations with modern cloud-native, automated solutions. Click <a href="{{ url_for('portfolio') }}"
+             aria-label="Portfolio in brief"> Portfolio</a> to view in brief!
+        </p>
+      </div>
+  </div>
+</section>
 <!-- Featured Projects Section -->
 <section class="py-5 bg-light">
   <div class="container">

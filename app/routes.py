@@ -25,6 +25,10 @@ def projects():
     projects = Project.query.all()
     return render_template('projects.html', title='Projects', projects=projects)
 
+@app.route('/portfolio')
+def portfolio():
+    projects = Project.query.all()
+    return render_template('portfolio.html', title='Portfolio', projects=projects)
 
 @app.route("/contact",  methods=["GET", "POST"])
 def contact():

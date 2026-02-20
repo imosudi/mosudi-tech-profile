@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio | Mosudi Tech Profile{% endblock %}
+
+{% block content %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap');
+
+  :root {
+    --ink: #0f0f0f;
+    --paper: #f5f2eb;
+    --accent: #c8502a;
+    --muted: #6b6560;
+    --border: #d6d0c4;
+  }
+
+  .portfolio-page {
+    background: var(--paper);
+    min-height: 100vh;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .portfolio-header {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .portfolio-header::before {
+    content: 'CV';
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    font-family: 'DM Serif Display', serif;
+    font-size: 7rem;
+    color: var(--border);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .portfolio-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.6rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.5px;
+  }
+
+  .portfolio-subtitle {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .btn-view-portfolio {
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .btn-view-portfolio:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .btn-download {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+
+  .btn-download:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .pdf-wrapper {
+    display: none;
+    margin-top: 2rem;
+    border: 1px solid var(--border);
+    background: #fff;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+    animation: slideDown 0.35s ease;
+    position: relative;
+  }
+
+  .pdf-wrapper.visible {
+    display: block;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .pdf-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .pdf-toolbar span {
+    color: var(--muted);
+  }
+
+  .pdf-close {
+    background: none;
+    border: none;
+    color: var(--paper);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0 0.25rem;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .pdf-close:hover { opacity: 1; }
+
+  .pdf-embed {
+    width: 100%;
+    height: 80vh;
+    border: none;
+    display: block;
+  }
+
+  .pdf-fallback {
+    padding: 3rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .pdf-fallback a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .meta-row span::before {
+    content: '— ';
+    color: var(--accent);
+  }
+</style>
+
+<section class="text-center py-5 bg-light rounded-3 shadow-sm">
+  <div class="container py-4">
+    <div class="d-flex align-items-center gap-3 mt-4 flex-wrap">
+      <button class="btn-view-portfolio" id="toggleBtn" onclick="togglePDF()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        View Portfolio
+      </button>
+      <a class="btn-download" href="{{ url_for('static', filename='docs/portfolio.pdf') }}" download>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </a>
+    </div>
+
+    <div class="pdf-wrapper" id="pdfWrapper">
+      <div class="pdf-toolbar">
+        <span>portfolio.pdf</span>
+        <div class="d-flex align-items-center gap-3">
+          <span id="pdfLabel">Mosudi Isiaka — CV</span>
+          <button class="pdf-close" onclick="togglePDF()" title="Close viewer">✕</button>
+        </div>
+      </div>
+
+      <object
+        data="{{ url_for('static', filename='docs/portfolio.pdf') }}"
+        type="application/pdf"
+        class="pdf-embed"
+        id="pdfObject">
+        <div class="pdf-fallback">
+          <p>Your browser doesn't support inline PDF viewing.</p>
+          <a href="{{ url_for('static', filename='docs/portfolio.pdf') }}" target="_blank">Open PDF in new tab</a>
+          &nbsp;or&nbsp;
+          <a href="{{ url_for('static', filename='docs/portfolio.pdf') }}" download>Download it</a>.
+        </div>
+      </object>
+    </div>
+
+  </div>
+</div>
+</section>
+<script>
+  function togglePDF() {
+    const wrapper = document.getElementById('pdfWrapper');
+    const btn = document.getElementById('toggleBtn');
+    const isVisible = wrapper.classList.contains('visible');
+
+    if (isVisible) {
+      wrapper.classList.remove('visible');
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> View Portfolio`;
+    } else {
+      wrapper.classList.add('visible');
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Close Portfolio`;
+      setTimeout(() => {
+        wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }
+</script>
+
+{% endblock %}

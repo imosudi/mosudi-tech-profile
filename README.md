@@ -109,7 +109,7 @@ cd mosudi-tech-profile
 
 2. **Create and activate a virtual environment**
 ```bash
-python -m venv venv
+python3 -m venv venv
 # macOS / Linux
 source venv/bin/activate
 # Windows (PowerShell)
@@ -140,7 +140,7 @@ MAIL_USE_TLS=False
 python main.py
 ```
 
-Access locally at: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+Access locally at: [http://127.0.0.1:5005/](http://127.0.0.1:5005/)
 
 ---
 
@@ -151,7 +151,7 @@ This application is production-ready using **WSGI**.
 - **Apache / mod_wsgi:** Use `main.wsgi`  
 - **Gunicorn / Nginx:**
   ```bash
-  gunicorn -w 4 -b 0.0.0.0:5000 main:app
+  gunicorn -w 4 -b 0.0.0.0:5005 main:app
   ```
 
 Ensure environment variables and database paths are correctly set before deployment.

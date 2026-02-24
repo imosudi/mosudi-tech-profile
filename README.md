@@ -50,7 +50,7 @@ The project includes:
 | **Authentication** | Flask-Security-Too |
 | **Forms & Validation** | Flask-WTF |
 | **Email Support** | Flask-Mail |
-| **Environment** | Python 3.10 – 3.12 |
+| **Environment** | Python 3.10 - 3.12 |
 | **Licence** | BSD 2-Clause |
 
 ---
@@ -99,7 +99,7 @@ mosudi-tech-profile/
 
 ## 🚀 Quick Start (Development)
 
-> Verified on Python 3.10 – 3.12
+> Verified on Python 3.10 - 3.12
 
 1. **Clone the repository**
 ```bash
